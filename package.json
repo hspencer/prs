@@ -27,9 +27,9 @@
   "type": "commonjs",
   "main": "index.js",
   "scripts": {
-    "start": "vite", // for local dev
-    "build": "vite build", // produces 'dist/'
-    "preview": "vite preview" // preview the production build
+    "start": "vite", 
+    "build": "vite build", 
+    "preview": "vite preview"
   },
   "dependencies": {
     "reveal.js": "^5.2.1"
