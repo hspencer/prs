@@ -1,6 +1,6 @@
 // main.js
-import 'reveal.js/dist/reveal.css';
-import 'reveal.js/dist/theme/black.css';        
+import 'reveal.js/docs/reveal.css';
+import 'reveal.js/docs/theme/black.css';        
 import 'reveal.js/plugin/highlight/monokai.css';
 
 import Reveal from 'reveal.js';

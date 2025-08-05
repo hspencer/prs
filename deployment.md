@@ -61,6 +61,6 @@ With the Notes plugin enabled:
 
 ```bash
 npm install
-npm run build         # produces dist/ with built files
+npm run build         # produces docs/ with built files
 npm run preview       # locally preview production build
 ```
