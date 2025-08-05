@@ -56,3 +56,11 @@ With the Notes plugin enabled:
 2. Open the correct local URL in Chrome, Firefox, or Safari.  
 3. Use arrow keys or on‑screen controls to advance slides.  
 4. Confirm external Markdown loads (if used) and speaker notes appear.
+
+## 5. Deploy All
+
+```bash
+npm install
+npm run build         # produces dist/ with built files
+npm run preview       # locally preview production build
+```
