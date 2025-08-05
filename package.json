@@ -1,0 +1,41 @@
+{
+  "name": "postgraduate-research-symposium-2025",
+  "version": "1.0.0",
+  "description": "Towards a Generative Pictographic System for Cognitive Accessibility and Inclusive Communication",
+  "keywords": [
+    "AAC",
+    "cognitive",
+    "accessibility",
+    "pictograms",
+    "practice-based",
+    "research",
+    "semantic",
+    "primitives",
+    "HTML",
+    "presentation"
+  ],
+  "homepage": "https://github.com/hspencer/prs#readme",
+  "bugs": {
+    "url": "https://github.com/hspencer/prs/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hspencer/prs.git"
+  },
+  "license": "MIT",
+  "author": "Herbert Spencer",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "dependencies": {
+    "reveal.js": "^5.2.1"
+  },
+  "devDependencies": {
+    "vite": "^7.0.6"
+  },
+  "scripts": {
+    "start": "vite"
+  }
+}
