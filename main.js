@@ -1,7 +1,7 @@
 // main.js
 import 'reveal.js/dist/reveal.css';
-import 'reveal.js/dist/theme/black.css';        // Your chosen theme CSS
-import 'reveal.js/plugin/highlight/monokai.css';// Code highlight theme (if used)
+import 'reveal.js/dist/theme/black.css';        
+import 'reveal.js/plugin/highlight/monokai.css';
 
 import Reveal from 'reveal.js';
 import Markdown from 'reveal.js/plugin/markdown/markdown.esm.js';
