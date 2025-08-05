@@ -1,16 +1,20 @@
 // main.js
-import Reveal   from './node_modules/reveal.js/dist/reveal.esm.js';
-import Markdown from './node_modules/reveal.js/plugin/markdown/markdown.esm.js';
-import Highlight from './node_modules/reveal.js/plugin/highlight/highlight.esm.js';
-import Zoom     from './node_modules/reveal.js/plugin/zoom/zoom.esm.js';
-import Notes    from './node_modules/reveal.js/plugin/notes/notes.esm.js';
+import 'reveal.js/dist/reveal.css';
+import 'reveal.js/dist/theme/black.css';        // Your chosen theme CSS
+import 'reveal.js/plugin/highlight/monokai.css';// Code highlight theme (if used)
 
-const deck = new Reveal({
-  controls:    true,
-  progress:    true,
+import Reveal from 'reveal.js';
+import Markdown from 'reveal.js/plugin/markdown/markdown.esm.js';
+import Highlight from 'reveal.js/plugin/highlight/highlight.esm.js';
+import Notes from 'reveal.js/plugin/notes/notes.esm.js';
+import Zoom from 'reveal.js/plugin/zoom/zoom.esm.js';
+
+// Initialize Reveal with desired plugins and options:
+Reveal.initialize({
+  hash: true,
+  controls: true,
+  progress: true,
   slideNumber: 'c/t',
-  transition:  'slide',
-  plugins:     [ Markdown, Highlight, Zoom, Notes ]
+  transition: 'slide',
+  plugins: [ Markdown, Highlight, Notes, Zoom ]
 });
-
-deck.initialize();

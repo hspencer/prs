@@ -27,15 +27,14 @@
   "type": "commonjs",
   "main": "index.js",
   "scripts": {
-    "test": "test"
+    "start": "vite", // for local dev
+    "build": "vite build", // produces 'dist/'
+    "preview": "vite preview" // preview the production build
   },
   "dependencies": {
     "reveal.js": "^5.2.1"
   },
   "devDependencies": {
     "vite": "^7.0.6"
-  },
-  "scripts": {
-    "start": "vite"
   }
 }
