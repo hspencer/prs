@@ -1,66 +1,61 @@
-# Deployment Guide
+## Presentation Deployment Guide
 
-This document details how to serve and run your Reveal.js presentation in a local environment, including speaker notes and full plugin support. All instructions assume you have already installed Reveal.js via `npm install reveal.js` and have your `index.html` and `main.js` in place.
+### Overview
 
-## 1. Basic File Open
+This repository contains the source code for a web-based presentation built with [Vite](https://vitejs.dev/) and [Reveal.js](https://revealjs.com/). It is configured for a modern development experience and a straightforward, manual deployment process to GitHub Pages.
 
-You may open `index.html` in your browser without a server.  
-- **Procedure**:  
-  1. Locate `index.html` in your file system.  
-  2. Double‑click or drag into your browser window.  
-- **Limitations**:  
-  - External Markdown files will **not** load.  
-  - Speaker notes will **not** appear.  
-  - Some plugins may fail due to the `file://` protocol.
+### Local Development
 
-## 2. Local HTTP Server
+To work on the presentation on your local machine, follow these steps:
 
-To enable full functionality—external Markdown, speaker notes, plugins—you must serve files over HTTP.
+1. Clone the repository:
 
-### 2.1 Reveal.js Development Server
-
-If you have the Reveal.js repository cloned:
-```bash
-cd path/to/reveal.js
-npm install            # first time only
-npm start              # serves at http://localhost:8000
+```vash
+  git clone https://github.com/hspencer/prs.git
+  cd prs
 ```
-Then navigate to `http://localhost:8000/your-project-folder/index.html`.
-
-### 2.2 Node.js Static Server
-
-Using the `serve` package:
-```bash
-npm install --global serve
-serve .                # serves current directory at http://localhost:3000
-```
-
-### 2.3 Python Built‑in Server
-
-Python 3 includes a simple HTTP server:
-```bash
-cd path/to/your/project
-python3 -m http.server 8000
-```
-Open `http://localhost:8000/` in a modern browser.
-
-## 3. Speaker Notes
-
-With the Notes plugin enabled:
-- Press the **S** key during presentation to open speaker notes in a separate window.
-- Ensure your browser allows pop‑ups for the notes window.
-
-## 4. Verification
-
-1. Start your chosen server.  
-2. Open the correct local URL in Chrome, Firefox, or Safari.  
-3. Use arrow keys or on‑screen controls to advance slides.  
-4. Confirm external Markdown loads (if used) and speaker notes appear.
-
-## 5. Deploy All
+2. Install dependencies:
+You will need Node.js (version 20 or higher).
 
 ```bash
-npm install
-npm run build         # produces docs/ with built files
-npm run preview       # locally preview production build
+  npm install
 ```
+3. Start the development server:
+This command starts a local server with hot-reloading, so changes you make to the code will be reflected instantly in your browser.
+
+```bash
+  npm run dev
+```
+
+The presentation will be available at the URL shown in your terminal (usually `http://localhost:5173`).
+
+### Deployment to GitHub Pages
+
+This project uses the `gh-pages` npm package for a simple, command-line based deployment.
+
+#### One-Time Setup
+Before your first deployment, you need to configure your GitHub repository:
+
+1. Navigate to your repository on GitHub.
+2. Go to the Settings tab.
+3. In the left sidebar, click on Pages.
+4. Under "Build and deployment", for the Source, select Deploy from a branch.
+5. Under Branch, select `gh-pages` and `/ (root)` for the folder. Click Save.
+
+(Note: The `gh-pages` branch will be created automatically on your first deployment, so you may need to perform this step after deploying for the first time).
+
+### Deploying
+Whenever you are ready to publish your changes, run the following command from your project's root directory:
+
+```bash
+npm run deploy
+```
+
+This command will automatically build the project and push the production-ready files to the gh-pages branch. GitHub Pages will then serve the site from that branch.
+
+The live site is available at: http://herbertspencer.net/prs
+
+### Key Configuration
+
+- `vite.config.js`: The `base: '/prs/'` option is set to ensure all asset paths work correctly on the published sub-path. The `build.outDir: 'dist'` option tells Vite to place the build output in the standard `dist` folder.
+- `package.json`: The `deploy` script (`gh-pages -d dist`) handles the process of pushing the dist folder to the gh-pages branch.
