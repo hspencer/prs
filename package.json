@@ -31,7 +31,7 @@
     "build": "vite build",
     "preview": "vite preview",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "deploy": "gh-pages -d docs"
   },
   "dependencies": {
     "reveal.js": "^5.2.1"

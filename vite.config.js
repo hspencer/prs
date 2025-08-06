@@ -11,7 +11,7 @@ export default defineConfig({
     // Especifica el directorio de salida para la compilación. GitHub Pages está
     // configurado para servir desde la carpeta 'docs', por lo que cambiamos el
     // valor predeterminado de 'dist' a 'docs'.
-    outDir: 'dist',
+    outDir: 'docs',
 
     // Asegura que el directorio de salida se vacíe en cada compilación.
     // Esta es una buena práctica para evitar que archivos antiguos permanezcan
