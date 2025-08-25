@@ -1,7 +1,8 @@
 // main.js
 
-// 1. Importar la librería principal de Reveal.js
-import Reveal from 'reveal.js';
+
+// 1. Import Reveal’s ESM build
+import Reveal from 'reveal.js/dist/reveal.esm.js';
 
 // 2. Importar los plugins deseados.
 // Nótese el '.esm.js' para una correcta integración con el sistema de módulos de Vite.

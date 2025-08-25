@@ -109,6 +109,53 @@
           </section>
         </section>
 
+        <section>
+  <h2>SVG as Code ↔ SVG as Image</h2>
+  <div style="display: grid; grid-template-columns: 50% 50%; height: 500px; gap: 1rem;">
+
+    <!-- LEFT: Code -->
+    <div style="overflow:auto; font-size: 0.55em; line-height:1.2;">
+      <pre><code class="language-xml" data-trim data-noescape>
+&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"&gt;
+  &lt;g id="bed"&gt;
+    &lt;rect x="20" y="120" width="160" height="40" 
+          fill="white" stroke="black"/&gt;
+    &lt;rect x="30" y="100" width="100" height="20" 
+          fill="white" stroke="black"/&gt;
+    &lt;rect x="120" y="90" width="40" height="20" 
+          fill="white" stroke="black"/&gt;
+  &lt;/g&gt;
+  &lt;g id="person"&gt;
+    &lt;circle cx="70" cy="60" r="10" fill="black"/&gt;
+    &lt;path d="M70,70 L90,110" stroke="black" stroke-width="6"/&gt;
+    &lt;path d="M70,70 L50,110" stroke="black" stroke-width="6"/&gt;
+  &lt;/g&gt;
+&lt;/svg&gt;
+      </code></pre>
+    </div>
+
+    <!-- RIGHT: Rendered SVG -->
+    <div style="display:flex; align-items:center; justify-content:center; background:#f8f8f8;">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="90%" height="auto">
+        <g id="bed">
+          <rect x="20" y="120" width="160" height="40" fill="white" stroke="black"/>
+          <rect x="30" y="100" width="100" height="20" fill="white" stroke="black"/>
+          <rect x="120" y="90" width="40" height="20" fill="white" stroke="black"/>
+        </g>
+        <g id="person">
+          <circle cx="70" cy="60" r="10" fill="black"/>
+          <path d="M70,70 L90,110" stroke="black" stroke-width="6"/>
+          <path d="M70,70 L50,110" stroke="black" stroke-width="6"/>
+        </g>
+      </svg>
+    </div>
+  </div>
+
+  <aside class="notes">
+    Left: editable SVG code (smaller font). Right: live render of the same SVG.
+  </aside>
+</section>
+
         <!-- Slide 6: Methodology – Data Collection -->
         <section data-background-color="#f0f0f0" data-transition="slide">
           <h2>Methodology: Data Collection</h2>
@@ -237,6 +284,7 @@
     </div>
 
     <!-- Load the main script as ES module -->
-    <script type="module" src="./main.js"></script>
+    <script type="module" src="/main.js"></script>
   </body>
 </html>
+
