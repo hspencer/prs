@@ -38,6 +38,7 @@
   },
   "devDependencies": {
     "gh-pages": "^6.3.0",
+    "sass": "^1.91.0",
     "vite": "^7.0.6"
   }
 }

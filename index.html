@@ -8,33 +8,58 @@
   <body>
     <div class="reveal">
       <div class="slides">
+        
         <!-- Slide 1: Title with background image and fade transition -->
         <section
-          data-background="images/hatched-texture.jpg"
-          data-transition="fade"
-        >
-          <h1>Towards a Generative Pictographic System</h1>
-          <p><em>Cognitive Accessibility and Inclusive Communication</em></p>
-          <p>
-            Herbert Spencer González<br />Postgraduate Research Symposium, 2025
-          </p>
-          <!-- Speaker notes in academic tone -->
-          <aside class="notes">
-            Introduce the research focus and significance of cognitive
-            accessibility.
-          </aside>
+          data-background-color="#FFF">
+          <h1>Towards a Generative Pictographic System for Cognitive Accessibility and Inclusive Communication</h1>
+          <p>Postgraduate Research Symposium, 2025</p>
+          <p>Auckland University of Technology</p>
         </section>
 
-        <!-- Slide 2: Abstract using Markdown plugin -->
+        <section 
+        data-background-color="#FFF"
+        data-transition="grow">
+            <h2>Herbert Spencer González</h2>
+
+            <section class="w">
+              <iframe class="web-window" src="https://herbertspencer.net/about/herbert-spencer/" frameborder="0"></iframe>
+            </section>
+
+            <section data-background-image="images/pictos-metro.jpg"></section>
+
+            <section class="w">
+              <img class="fit" src="images/pictos-service.png" alt="PICTOS SERVICE ARCHITECTURE">
+            </section>
+
+            <section class="w">
+              <iframe class="web-window" src="https://pictogramas.pictos.cl" frameborder="0"></iframe>
+            </section>
+            
+        </section>
+      
+        <section>
+          <section data-transition="slide">
+          <h3>My career timeline</h3>
+          <!-- Give Reveal permission to stretch + a real height -->
+          <div class="p5-host r-stretch" data-sketch="chronology"></div>
+          <aside class="notes">Mounts when visible; unmounts on exit.</aside>
+          </section>
+          <!-- 1) p5 primero -->
+          <script defer src="https://cdn.jsdelivr.net/npm/p5@1.7.0/lib/p5.min.js"></script>
+          <!-- 2) tus sketches (dependen de p5) -->
+          <script defer src="p5/chronology.js"></script>
+        </section>
+          
+      
         <section
           data-markdown
-          data-background-color="#ffffff"
+          data-background-color="linear-gradient(173deg,rgba(42, 144, 184, 1) 0%, rgba(87, 199, 133, 1) 37%, rgba(237, 221, 83, 1) 100%)"
           data-transition="slide"
         >
-          <script type="text/template">
-            ## Abstract
+          <p>
             This presentation outlines a practice-based investigation aimed at developing a generative pictographic system that enhances cognitive accessibility for adults with complex communication needs. The project integrates a semantic-to-pictogram generative pipeline with situated inquiry through semi-structured interviews and design probes.
-          </script>
+          </p>
         </section>
 
         <!-- Slide 3: Context and Motivation with placeholder image -->
@@ -115,20 +140,33 @@
 
     <!-- LEFT: Code -->
     <div style="overflow:auto; font-size: 0.55em; line-height:1.2;">
-      <pre><code class="language-xml" data-trim data-noescape>
-&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"&gt;
+      <pre style="font-size: 85%; white-space: pre-wrap;"><code class="language-xml" data-trim data-noescape>
+&lt;svg id="pictogram" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 100 100"&gt;
+  &lt;!-- Make the bed  --&gt;
+  &lt;defs&gt;
+    &lt;style&gt;
+      .f {
+        fill: #fff;
+        stroke: #000;
+        stroke-linejoin: square;
+      }
+      .k {
+        fill: #000;
+        stroke: #FFF;
+        stroke-linejoin: square;
+      }
+    &lt;/style&gt;
+  &lt;/defs&gt;
   &lt;g id="bed"&gt;
-    &lt;rect x="20" y="120" width="160" height="40" 
-          fill="white" stroke="black"/&gt;
-    &lt;rect x="30" y="100" width="100" height="20" 
-          fill="white" stroke="black"/&gt;
-    &lt;rect x="120" y="90" width="40" height="20" 
-          fill="white" stroke="black"/&gt;
+    &lt;path id="bed_frame" class="f" d="M86.6,66.1l6.7,10.9v7.1h-5.1v5.1c0,.9-.7,1.6-1.6,1.6h-2.3c-.9,0-1.6-.7-1.6-1.6v-5.1h-38.2v5.1c0,.9-.7,1.6-1.6,1.6h-2.3c-.9,0-1.6-.7-1.6-1.6v-5.1h-5.1v-7.1l6.7-10.9v-18.5c0-1.3,1.1-2.4,2.4-2.4h41.3c1.3,0,2.4,1.1,2.4,2.4v18.5h-.1Z"/&gt;
+    &lt;path id="matress" class="f" d="M85.9,78.6h-44.4c-3,0-5.4-2.4-5.4-5.4v-1.9c0-1.5.7-3,1.8-4l7.7-6.8c1-.9,2.3-1.4,3.6-1.4h29c1.3,0,2.6.5,3.6,1.4l7.7,6.8c1.2,1,1.8,2.5,1.8,4v1.9c0,3-2.4,5.4-5.4,5.4Z"/&gt;
+    &lt;path id="pillow" class="f" d="M52.2,53.5h22.4c2.3,0,4.1,1.8,4.1,4h0c0,2.2-1.8,4-4.1,4h-22.4c-2.3,0-4.1-1.8-4.1-4h0c0-2.2,1.8-4,4.1-4Z"/&gt;
+    &lt;path id="sheet" class="f" d="M50.6,39.6c2.1,1.3,15.3,5.5,15.3,5.5,0,0-1.3,9.6-3.9,12.5-6.3,7.1-17.2,8.3-20.7,10.2s-3.4,9.7.8,10.8c-7.6.3-6.9-8.9-4.2-11.3s7.9-6.7,10.7-11.7c4.1-7.4,2.3-13.8,2-16Z"/&gt;
   &lt;/g&gt;
   &lt;g id="person"&gt;
-    &lt;circle cx="70" cy="60" r="10" fill="black"/&gt;
-    &lt;path d="M70,70 L90,110" stroke="black" stroke-width="6"/&gt;
-    &lt;path d="M70,70 L50,110" stroke="black" stroke-width="6"/&gt;
+    &lt;path id="arm" class="k" d="M29.9,37.5l4.2,7.8,6.7,3.7c1.1.6,1.5,2.1.7,3.2h0c-.6.8-1.7,1.1-2.6.7l-9.1-3.9-4.1-6.4"/&gt;
+    &lt;path id="body" class="k" d="M29,90.5l-4.9.2-5-35.6-3,18.9-4.2,17.1h-5l4.3-19.7.6-19.4c.2-2.1.2-3.2.6-5,0,0,.8-3.7,2-6.9s3.5-7.2,5.2-9.3l2.3-2.7c2.4-2.8,6.7-3.1,9.5-.7l2.1,1.8,7.6,9.2c.8.9,1.8,1.6,3,2l10,3c1.4.4,2.2,2,1.6,3.4h0c-.5,1.1-1.7,1.8-2.9,1.5l-13.7-3.3-9.1-7.5-4.9,7.5,4,45.5h0Z"/&gt;
+    &lt;circle id="head" class="k" cx="38.9" cy="19.9" r="5.5"/&gt;
   &lt;/g&gt;
 &lt;/svg&gt;
       </code></pre>
@@ -136,16 +174,32 @@
 
     <!-- RIGHT: Rendered SVG -->
     <div style="display:flex; align-items:center; justify-content:center; background:#f8f8f8;">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="90%" height="auto">
+      <svg id="pictogram" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 100 100">
+        <!-- Make the bed  -->
+        <defs>
+          <style>
+            .f {
+              fill: #fff;
+              stroke: #000;
+              stroke-linejoin: square;
+            }
+            .k {
+              fill: #000;
+              stroke: #FFF;
+              stroke-linejoin: square;
+            }
+          </style>
+        </defs>
         <g id="bed">
-          <rect x="20" y="120" width="160" height="40" fill="white" stroke="black"/>
-          <rect x="30" y="100" width="100" height="20" fill="white" stroke="black"/>
-          <rect x="120" y="90" width="40" height="20" fill="white" stroke="black"/>
+          <path id="bed_frame" class="f" d="M86.6,66.1l6.7,10.9v7.1h-5.1v5.1c0,.9-.7,1.6-1.6,1.6h-2.3c-.9,0-1.6-.7-1.6-1.6v-5.1h-38.2v5.1c0,.9-.7,1.6-1.6,1.6h-2.3c-.9,0-1.6-.7-1.6-1.6v-5.1h-5.1v-7.1l6.7-10.9v-18.5c0-1.3,1.1-2.4,2.4-2.4h41.3c1.3,0,2.4,1.1,2.4,2.4v18.5h-.1Z"/>
+          <path id="matress" class="f" d="M85.9,78.6h-44.4c-3,0-5.4-2.4-5.4-5.4v-1.9c0-1.5.7-3,1.8-4l7.7-6.8c1-.9,2.3-1.4,3.6-1.4h29c1.3,0,2.6.5,3.6,1.4l7.7,6.8c1.2,1,1.8,2.5,1.8,4v1.9c0,3-2.4,5.4-5.4,5.4Z"/>
+          <path id="pillow" class="f" d="M52.2,53.5h22.4c2.3,0,4.1,1.8,4.1,4h0c0,2.2-1.8,4-4.1,4h-22.4c-2.3,0-4.1-1.8-4.1-4h0c0-2.2,1.8-4,4.1-4Z"/>
+          <path id="sheet" class="f" d="M50.6,39.6c2.1,1.3,15.3,5.5,15.3,5.5,0,0-1.3,9.6-3.9,12.5-6.3,7.1-17.2,8.3-20.7,10.2s-3.4,9.7.8,10.8c-7.6.3-6.9-8.9-4.2-11.3s7.9-6.7,10.7-11.7c4.1-7.4,2.3-13.8,2-16Z"/>
         </g>
         <g id="person">
-          <circle cx="70" cy="60" r="10" fill="black"/>
-          <path d="M70,70 L90,110" stroke="black" stroke-width="6"/>
-          <path d="M70,70 L50,110" stroke="black" stroke-width="6"/>
+          <path id="arm" class="k" d="M29.9,37.5l4.2,7.8,6.7,3.7c1.1.6,1.5,2.1.7,3.2h0c-.6.8-1.7,1.1-2.6.7l-9.1-3.9-4.1-6.4"/>
+          <path id="body" class="k" d="M29,90.5l-4.9.2-5-35.6-3,18.9-4.2,17.1h-5l4.3-19.7.6-19.4c.2-2.1.2-3.2.6-5,0,0,.8-3.7,2-6.9s3.5-7.2,5.2-9.3l2.3-2.7c2.4-2.8,6.7-3.1,9.5-.7l2.1,1.8,7.6,9.2c.8.9,1.8,1.6,3,2l10,3c1.4.4,2.2,2,1.6,3.4h0c-.5,1.1-1.7,1.8-2.9,1.5l-13.7-3.3-9.1-7.5-4.9,7.5,4,45.5h0Z"/>
+          <circle id="head" class="k" cx="38.9" cy="19.9" r="5.5"/>
         </g>
       </svg>
     </div>
@@ -259,7 +313,7 @@
 
         <!-- Slide 11: Conclusions and Next Steps -->
         <section
-          data-background="http://lorempixel.com/1920/1080/abstract"
+          data-background="images/core-board.png"
           data-transition="zoom"
         >
           <h2>Conclusions & Next Steps</h2>
@@ -270,6 +324,13 @@
           </ul>
         </section>
 
+        <section data-background="images/pn-01.png"></section>
+        <section data-background="images/pn-02.png"></section>
+        <section data-background="images/pn-03.png"></section>
+        <section data-background="images/pn-04.png"></section>
+        <section data-background="images/pn-05.png"></section>
+        <section data-background="images/pn-06.png"></section>
+
         <!-- Slide 12: Contact Information -->
         <section data-background-color="#f0f0f0" data-transition="fade">
           <h2>Contact</h2>
@@ -278,6 +339,8 @@
             <a href="mailto:herbert.spencer@aut.ac.nz"
               >herbert.spencer@aut.ac.nz</a
             >
+
+          <p>This presentation lives at <a href="http://herbertspencer.net/prs">http://herbertspencer.net/prs</a></p>
           </p>
         </section>
       </div>
@@ -287,4 +350,3 @@
     <script type="module" src="/main.js"></script>
   </body>
 </html>
-

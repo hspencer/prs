@@ -1,30 +1,53 @@
 // main.js
 
 
-// 1. Import Reveal’s ESM build
+// Import Reveal’s ESM build
 import Reveal from 'reveal.js/dist/reveal.esm.js';
 
-// 2. Importar los plugins deseados.
+// Importar los plugins deseados.
 // Nótese el '.esm.js' para una correcta integración con el sistema de módulos de Vite.
 import Markdown from 'reveal.js/plugin/markdown/markdown.esm.js';
 import Zoom from 'reveal.js/plugin/zoom/zoom.esm.js';
 import Notes from 'reveal.js/plugin/notes/notes.esm.js';
 import Highlight from 'reveal.js/plugin/highlight/highlight.esm.js';
 
-// 3. Importar los estilos principales de Reveal.js.
-import 'reveal.js/dist/reveal.css';
 
-// 4. Importar el tema deseado. Se ha cambiado a 'serif' según lo solicitado.
-import 'reveal.js/dist/theme/serif.css';
+// Importa tu SCSS (Vite compilará automáticamente)
+import './css/custom.scss';
 
-// 5. Opcional: Importar un tema para el resaltado de sintaxis si se usa el plugin Highlight.
-import 'reveal.js/plugin/highlight/monokai.css';
 
-// 6. Inicializar Reveal.js, pasando los plugins que se deseen utilizar en un array.
+// Inicializar Reveal.js, pasando los plugins que se deseen utilizar en un array.
 const deck = new Reveal({
    plugins: [ Markdown, Zoom, Notes, Highlight ]
 });
 
-deck.initialize({
-  // Opcional: Configuración adicional aquí
+document.addEventListener('DOMContentLoaded', () => {
+  const deck = new Reveal({
+    hash: true,
+    slideNumber: true,
+    transition: 'slide'
+  });
+
+  deck.initialize().then(() => {
+    // Mount whatever is visible now
+    const current = deck.getCurrentSlide();
+    if (current) mountP5In(current);
+
+    // Safer to mount after transition completes (sizes are final)
+    const onAfter = (e) => {
+      if (e.previousSlide) unmountP5In(e.previousSlide);
+      if (e.currentSlide)  mountP5In(e.currentSlide);
+    };
+
+    // v4: 'slidetransitionend' is the most reliable for size
+    if (typeof deck.on === 'function') {
+      deck.on('slidetransitionend', onAfter);
+      deck.on('overviewhidden', e => { const s = deck.getCurrentSlide(); if (s) mountP5In(s); });
+    } else {
+      deck.addEventListener('slidetransitionend', onAfter);
+      deck.addEventListener('overviewhidden', () => {
+        const s = deck.getCurrentSlide(); if (s) mountP5In(s);
+      });
+    }
+  });
 });

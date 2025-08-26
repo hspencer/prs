@@ -1,7 +1,14 @@
 // vite.config.js
 import { defineConfig } from 'vite';
+import path from 'path';
 
 export default defineConfig({
+  resolve: {
+    alias: {
+      // Así podremos escribir @reveal/... en los imports SCSS
+      '@reveal': path.resolve(__dirname, 'node_modules/reveal.js/src/css')
+    }
+  },
   // Establece la ruta base pública para el proyecto. Esto es crucial para el
   // despliegue en GitHub Pages en una subruta. Dado que el sitio estará en
   // 'herbertspencer.net/prs', la ruta base debe ser '/prs/'.

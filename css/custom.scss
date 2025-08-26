@@ -1,0 +1,182 @@
+/* src/css/custom.scss */
+
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&family=Outfit:wght@100..900&display=swap');
+
+// styles/main.scss
+@import "/node_modules/reveal.js/css/reveal.scss";
+
+/* 1️⃣ Variables tipográficas */
+$font-family-base: 'Lexend',
+Helvetica,
+Arial,
+sans-serif;
+$font-size-base: 1.2rem; // 16px
+$line-height-base: 1.5;
+
+/* 2️⃣ Colores (puedes usar los de Reveal como base) */
+$primary-color: #460556;
+$secondary-color: #ff6600;
+
+/* 3️⃣ Sobrescribe variables de Reveal (si las usa) */
+$background-color: #d7c8e9; // Fondo de la presentación
+$color: #00000092; // Color de texto
+
+/* 4️⃣ Estilos globales */
+body {
+    font-family: $font-family-base;
+    font-size: $font-size-base;
+    line-height: $line-height-base;
+    color: $color;
+    background: $background-color;
+}
+
+
+
+/* 5️⃣ Sobrescribe clases de Reveal (ejemplo) */
+.reveal .slide-background {
+    background-size: cover;
+    background-position: center;
+}
+
+/* 6️⃣ Si quieres usar variables CSS (custom properties) */
+:root {
+    --r-background: $background-color;
+    --r-color: $color;
+}
+
+.reveal {
+    .slides {
+        line-height: $line-height-base;
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        li,
+        th,
+        td,
+        p,
+        pre {
+            text-align: left;
+        }
+
+        table {
+            width: 80%;
+            margin: 0 auto;
+            border-collapse: collapse;
+
+            th {
+                border-bottom: .3ex solid $primary-color;
+            }
+        }
+        img.fit{
+            margin: 0 auto;
+            max-height: 80vh;
+            max-width: 90%;
+            height: auto;
+        }
+        .w{background-color: white;}
+    }
+}
+
+.p5-host {
+    width: 100%;
+    height: 80vh;
+    /* Use vh so it’s never 0px */
+    min-height: 320px;
+    /* Safety floor */
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.web-window{
+    border: 3px solid #0007;
+    border-radius: 1.34ex;
+    box-shadow: 0 1ex 2px rgba(0, 0, 0, 0.142), 0 .66ex 5px rgba(0, 0, 0, 0.355), 0 .33ex 17px #0003;
+    width: 110%;
+    height: 80vh;
+    min-height: 10em;
+    transform-origin: center;
+    scale: 70%;
+}
+
+/* code highlight */
+
+
+.hljs {
+    display: block;
+    overflow-x: auto;
+    padding: 0.5em;
+    background: transparent;
+    color: #6b6767;
+    white-space: pre-wrap;
+}
+
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-tag {
+    color: #9b6b18;
+}
+
+.hljs-template-tag {
+    color: #df6363;
+}
+
+.hljs-number {
+    color: #8cd0d3;
+}
+
+.hljs-variable,
+.hljs-template-variable,
+.hljs-attribute {
+    color: #ccd34e;
+}
+
+.hljs-literal {
+    color: #6d6d39;
+}
+
+.hljs-subst {
+    color: #8f8f8f;
+}
+
+.hljs-title,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-section,
+.hljs-type {
+    color: #5fa94c;
+}
+
+.hljs-symbol,
+.hljs-bullet,
+.hljs-link {
+    color: #dca3a3;
+}
+
+.hljs-deletion,
+.hljs-string,
+.hljs-built_in,
+.hljs-builtin-name {
+    color: #cc9393;
+}
+
+.hljs-addition,
+.hljs-comment,
+.hljs-quote,
+.hljs-meta {
+    color: #7f9f7f;
+}
+
+
+.hljs-emphasis {
+    font-style: italic;
+}
+
+.hljs-strong {
+    font-weight: bold;
+}
