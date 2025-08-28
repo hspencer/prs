@@ -57,5 +57,5 @@ The live site is available at: http://herbertspencer.net/prs
 
 ### Key Configuration
 
-- `vite.config.js`: The `base: '/prs/'` option is set to ensure all asset paths work correctly on the published sub-path. The `build.outDir: 'dist'` option tells Vite to place the build output in the standard `dist` folder.
-- `package.json`: The `deploy` script (`gh-pages -d dist`) handles the process of pushing the dist folder to the gh-pages branch.
+- `vite.config.js`: The `base: '/prs/'` option is set to ensure all asset paths work correctly on the published sub-path. The `build.outDir: 'docs'` option tells Vite to place the build output in the standard `docs` folder.
+- `package.json`: The `deploy` script (`gh-pages -d docs`) handles the process of pushing the docs folder to the gh-pages branch.
