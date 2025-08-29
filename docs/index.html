@@ -12,9 +12,9 @@
 
   <!-- tu entry de Vite (ruta relativa para que funcione en /prs/) -->
 
-    <script type="module" crossorigin src="/prs/assets/index-DzPNtTCW.js"></script>
-    <link rel="stylesheet" crossorigin href="/prs/assets/index-daRvnhuU.css">
-  </head>
+  <script type="module" crossorigin src="/prs/assets/index-DzPNtTCW.js"></script>
+  <link rel="stylesheet" crossorigin href="/prs/assets/index-daRvnhuU.css">
+</head>
 
 <body>
   <div class="reveal">
@@ -169,6 +169,88 @@
           </div>
         </section>
         <section data-background-image="images/svg-as-code.png" data-transition="fade"></section>
+      </section>
+
+
+      <!-- PictoNet Generative Pipeline -->
+      <section>
+        <!-- Título principal -->
+        <section data-background-color="#FFF">
+          <h2>PictoNet Generative Pipeline</h2>
+          <p class="tagline">From text input to adaptive pictogram output</p>
+          <aside class="notes">
+            Esta sección introduce las fases del pipeline de PictoNet, mostrando cómo un enunciado se transforma en un
+            pictograma generativo, editable y culturalmente sensible.
+          </aside>
+        </section>
+
+        <!-- Fase 1 -->
+        <section>
+          <h3>1. Text Input</h3>
+          <p>The user provides a short phrase or utterance.<br><em>Language defaults to Spanish but can be
+              configured.</em></p>
+          <aside class="notes">El punto de partida: un enunciado breve que será procesado para generar pictogramas.
+          </aside>
+        </section>
+
+        <!-- Fase 2 -->
+        <section>
+          <h3>2. Visual Tokenisation</h3>
+          <p>Processes input into semantic units using NSM primitives, identifying iconisable elements and sentence
+            type.</p>
+          <aside class="notes">Aquí se fragmenta el enunciado en tokens visuales con base en NSM.</aside>
+        </section>
+
+        <!-- Fase 3 -->
+        <section>
+          <h3>3. Utterance Classification</h3>
+          <p>Identifies the communicative intent (assertive, volitive, emotive, directive, hypothetical).</p>
+          <aside class="notes">Se reconoce la intención comunicativa, lo cual guía el renderizado visual.</aside>
+        </section>
+
+        <!-- Fase 4 -->
+        <section>
+          <h3>4. Conceptual Blending</h3>
+          <p>Combines action, object, and modifiers into composite visual concepts.</p>
+          <aside class="notes">El blending integra metáforas y conceptos abstractos en formas visuales comprensibles.
+          </aside>
+        </section>
+
+        <!-- Fase 5 -->
+        <section>
+          <h3>5. Layout Planning</h3>
+          <p>Determines spatial arrangement of pictographic components according to semantic weight and syntax.</p>
+          <aside class="notes">El planificador define jerarquías visuales y disposición espacial.</aside>
+        </section>
+
+        <!-- Fase 6 -->
+        <section>
+          <h3>6. SVG Composition</h3>
+          <p>Selects and layers graphical assets into a coherent pictogram with defined visual grammar.</p>
+          <aside class="notes">Aquí se genera el SVG base con íconos y modificadores.</aside>
+        </section>
+
+        <!-- Fase 7 -->
+        <section>
+          <h3>7. Personal Configuration (PPF)</h3>
+          <p>Applies user preferences (stroke weight, colour, density, animation tolerance).</p>
+          <aside class="notes">El sistema se adapta a necesidades perceptuales o culturales de cada usuario.</aside>
+        </section>
+
+        <!-- Fase 8 -->
+        <section>
+          <h3>8. Output & Metadata</h3>
+          <p>Generates the final SVG with embedded metadata and prepares optional feedback signals for RLHF.</p>
+          <aside class="notes">El resultado es un SVG legible y editable, con trazabilidad semántica.</aside>
+        </section>
+
+        <!-- Fase 9 -->
+        <section>
+          <h3>9. Global Style Control</h3>
+          <p>Configures global rendering logic: determinism, detail level, colour palette, animation behaviour.</p>
+          <aside class="notes">Finalmente, se aplican parámetros globales que controlan la consistencia del sistema.
+          </aside>
+        </section>
       </section>
 
       <!-- PictoForge -->
