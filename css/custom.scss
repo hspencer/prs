@@ -15,6 +15,8 @@ $secondary-color: #ff6600;
 /* 3️⃣ Sobrescribe variables de Reveal (si las usa) */
 $background-color: #e0e7ed; // Fondo de la presentación
 $color: #141414c2; // Color de texto
+$background-color: #e0e7ed; // Fondo de la presentación
+$color: #141414c2; // Color de texto
 
 /* Long shadow 
         para usar:
@@ -72,6 +74,8 @@ body {
             background:
                 linear-gradient(135deg, rgba(242, 174, 2, 0.621), rgba(175, 19, 2, 0.942)),
                 url('/images/texture-22.jpg');
+                linear-gradient(135deg, rgba(242, 174, 2, 0.621), rgba(175, 19, 2, 0.942)),
+                url('/images/texture-22.jpg');
             background-size: cover;
             background-position: center;
             -webkit-background-clip: text;
@@ -82,7 +86,12 @@ body {
 
         p {
             &.tagline {
+        p {
+            &.tagline {
                 margin: 0;
+                font-size: 1.2rem;
+                letter-spacing: 0.75ex;
+                color: transparentize($color, 0.3);
                 font-size: 1.2rem;
                 letter-spacing: 0.75ex;
                 color: transparentize($color, 0.3);
@@ -91,6 +100,8 @@ body {
             }
 
 
+            &.huge {
+                font-weight: 750;
             &.huge {
                 font-weight: 750;
                 line-height: 140%;
@@ -115,11 +126,20 @@ body {
         }
 
         .credentials {
+
+        .credentials {
             display: grid;
+            font-size: 75%;
+            line-height: 110%;
             font-size: 75%;
             line-height: 110%;
             grid-template-columns: 1fr 1fr 1fr;
             margin: 1.5em 0 0 0;
+            margin: 1.5em 0 0 0;
+
+            .author {
+                line-height: 100%;
+                margin: 0 0 2em 0;
 
             .author {
                 line-height: 100%;
@@ -129,9 +149,13 @@ body {
 
             .tutors {
                 dt {
+            .tutors {
+                dt {
                     font-weight: 300;
                     margin: 0 0 0 2em;
                 }
+
+                dl {
 
                 dl {
                     margin: 0 0 0 4em;
@@ -146,7 +170,17 @@ body {
                     height: auto;
                 }
             }
+
+            div {
+                img.logo {
+                    position: absolute;
+                    bottom: 0;
+                    width: 4em;
+                    height: auto;
+                }
+            }
         }
+
 
 
         table {
