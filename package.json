@@ -2,6 +2,7 @@
   "name": "postgraduate-research-symposium-2025",
   "version": "1.0.0",
   "description": "Towards a Generative Pictographic System for Cognitive Accessibility and Inclusive Communication",
+  "private": true,
   "keywords": [
     "AAC",
     "cognitive",
@@ -14,7 +15,7 @@
     "HTML",
     "presentation"
   ],
-  "homepage": "https://github.com/hspencer/prs#readme",
+  "homepage": "https://hspencer.github.io/prs/",
   "bugs": {
     "url": "https://github.com/hspencer/prs/issues"
   },
@@ -23,15 +24,18 @@
     "url": "git+https://github.com/hspencer/prs.git"
   },
   "license": "MIT",
-  "author": "Herbert Spencer",
-  "type": "commonjs",
-  "main": "index.js",
+  "author": "Herbert Spencer <hspencer@ead.cl>",
+  "type": "module",
+  "engines": {
+    "node": ">=18.0.0"
+  },
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build --base=/prs/",
     "preview": "vite preview",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d docs"
+    "deploy": "gh-pages -d dist -b gh-pages -t true -u \"Herbert Spencer <hspencer@ead.cl>\" -m \"deploy $(date -u +'%F %T UTC')\" -v",
+    "postdeploy": "git switch -"
   },
   "dependencies": {
     "reveal.js": "^5.2.1"

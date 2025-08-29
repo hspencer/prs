@@ -1,4 +1,4 @@
->Note: this repository is the presentation for the [Postgraduate Research Symposium 2025 - AUT](https://www.aut.ac.nz/research/postgraduate-student-support/events/research-symposium). Check the [deployment instructions](deployment.md).
+>Note: this repository is Herbert's presentation for the [Postgraduate Research Symposium 2025 - AUT](https://www.aut.ac.nz/research/postgraduate-student-support/events/research-symposium). Check the [deployment instructions](deployment.md) for further tweaking and understanding how this works.
 
 # Towards a Generative Pictographic System for Cognitive Accessibility and Inclusive Communication
 
