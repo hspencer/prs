@@ -5,7 +5,15 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Towards a Generative Pictographic System</title>
-</head>
+
+  <!-- en <head> o justo antes de </body>, pero SIEMPRE antes de main.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/2.0.4/p5.min.js" defer></script>
+  <script src="p5/chronology.js" defer></script>
+
+  <!-- tu entry de Vite (ruta relativa para que funcione en /prs/) -->
+  <script type="module" src="./main.js"></script>
+
+  </head>
 
 <body>
   <div class="reveal">
@@ -22,12 +30,15 @@
             PhD Design Student<br>
           </div>
           <div class="tutors">
-            <dt>Supervisors</dt> <dl>Marcos Steagall</dl><dl>Ivana Nakarada-Kordic</dl>
-            <dt>Advisor</dt> <dl>Welby Ings</dl>
+            <dt>Supervisors</dt>
+            <dl>Marcos Steagall</dl>
+            <dl>Ivana Nakarada-Kordic</dl>
+            <dt>Advisor</dt>
+            <dl>Welby Ings</dl>
           </div>
           <img class="logo" src="images/AUT.jpg" alt="Auckland University of Technology">
         </div>
-        
+
 
       </section>
 
@@ -49,8 +60,7 @@
         </section>
 
         <section class="w">
-          <iframe class="web-window" src="https://wiki.ead.pucv.cl/Herbert_Spencer#Biograf.C3.ADa"
-            frameborder="0"></iframe>
+          <div class="p5-host" data-sketch="chronology"></div>
         </section>
 
         <section data-background-image="images/ktm.jpg"></section>
@@ -164,26 +174,108 @@
       <section data-background-image="images/pictoforge.png"></section>
       <!-- Slide 4: The pictogram pipeline: The model as a generator -->
 
-
       <!-- Slide 5: Rationale -->
+      <section>
+        <h2>Rationale</h2>
+        <ul>
+          <li>Communication is a basic human right</li>
+          <li>Individuals with Complex Communication Needs (CCN) are systematically marginalised</li>
+          <li>AAC systems often prioritise function over aesthetics, neglecting cultural and expressive depth</li>
+          <li>Design has a structural responsibility to pre-empt exclusion</li>
+          <li>Pictograms as generative, situated artefacts—bridging AI and design</li>
+        </ul>
+        <aside>
+          Stress the ethical duty: not only tools, but infrastructures that enable agency and belonging.
+          Cite accessibility laws (NZ, Canada, Chile, etc.).
+          Emphasise that design itself often encodes exclusion—hence the urgency of this research.
+        </aside>
+      </section>
 
       <!-- Slide 6: Significance -->
+      <section>
+        <h2>Significance</h2>
+        <ul>
+          <li>Reframes accessibility as a shared condition, not a marginal issue</li>
+          <li>Expands expressive capacity for CCN users—abstract, affective, context-based meanings</li>
+          <li>Bridges AAC practice and design craft</li>
+          <li>Proposes participatory, federated learning models for cultural adaptation</li>
+          <li>Envisions a pictographic commons: an open-source evolving visual language</li>
+        </ul>
+        <aside>
+          Highlight shift: cognitive accessibility as aesthetic and epistemological.
+          Users move from passive recipients to co-creators of meaning.
+          Shared commons counters fragmentation and personalisation silos.
+        </aside>
+      </section>
 
-      <!-- Slide 7: PictoNet (the model's name) -->
+      <!-- Slide 7: PictoNet -->
+      <section>
+        <h2>PictoNet</h2>
+        <p>The generative engine: from natural language to SVG pictograms.</p>
+        <ul>
+          <li>Visual grammar grounded in semantic primitives (NSM)</li>
+          <li>Structured pipeline: prompt → semantic parsing → SVG generation</li>
+          <li>Editable, reversible, explainable outputs</li>
+          <li>Reinforcement Learning with Human Feedback (RLHF)</li>
+          <li>Open-source, Creative Commons licensed</li>
+        </ul>
+        <aside>
+          Present PictoNet as the “core engine” of the research.
+          Mention the lineage from PICTOS → Lectogram → PictoNet.
+          Stress SVG as code: transparent, inspectable, modifiable.
+        </aside>
+      </section>
 
-      <!-- Slide 8: PictoForge (the editor's & trainer name)  
-                      PictoForge is the name of the continuation of Design Products
-                      Prompt to SVG, SVG editor, SVG segmented reprompter
-        -->
+      <!-- Slide 8: PictoForge -->
+      <section>
+        <h2>PictoForge</h2>
+        <p>The editor and trainer environment.</p>
+        <ul>
+          <li>Interactive SVG editor for direct manipulation</li>
+          <li>Segmented re-prompting: refine parts of pictograms</li>
+          <li>Training interface for dataset curation</li>
+          <li>Supports iterative correction and validation</li>
+          <li>Extends design practice into everyday AAC use</li>
+        </ul>
+        <aside>
+          PictoForge = continuation of design tools.
+          Emphasise user agency: co-edit, correct, and refine the model.
+          It bridges professional design practice and lived AAC use.
+        </aside>
+      </section>
 
-      <!-- Slide 9: Distributed Model 
-                      MediaFranca Initiative, que mantiene 3 proyectos: 
-                       - pictonet (general speech to SVG)
-                       - pictoforge (general tool or SVG Editor)
-                       - There are several spaces, and each space must have a local visual heritage. 
-                          - el tercero es MediaFranca, como arquitectura de aprendizaje federado
-                            ¿se puede compartir inteligencia?
-        -->
+      <!-- Slide 9: Distributed Model / MediaFranca -->
+      <section>
+        <h2>Distributed Model: MediaFranca</h2>
+        <ul>
+          <li><strong>PictoNet</strong>: speech-to-SVG generative core</li>
+          <li><strong>PictoForge</strong>: editor and feedback interface</li>
+          <li><strong>MediaFranca</strong>: federated architecture for shared intelligence</li>
+        </ul>
+        <p>Each community contributes local adaptations → aggregated into a shared pictographic commons.</p>
+        <aside>
+          Explain the universal–local paradox in AAC.
+          MediaFranca allows plural visual heritages without losing collective coherence.
+          Governance: validation, contribution roles, reputation systems.
+          Accessibility as civic infrastructure, not a service.
+        </aside>
+      </section>
+
+      <!-- Optional: Methodology slide -->
+      <section>
+        <h2>Methodology</h2>
+        <ul>
+          <li><strong>Situated Inquiry</strong>: interviews with AAC professionals, designers, users</li>
+          <li><strong>Formal Modelling</strong>: generative engine design and testing</li>
+          <li>Double-diamond, practice-based: making, reflecting, refining</li>
+          <li>Two intertwined tracks: relational & ontological</li>
+        </ul>
+        <aside>
+          Show the Double-Diamond Double-Track figure.
+          Stress practice-based approach: knowledge is produced through making pictograms, errors, corrections.
+          Iterative cycles link theory and practice.
+        </aside>
+      </section>
 
       <!-- Thank you, contact & information -->
       <section data-background-color="#f0f0f0" data-transition="fade">
@@ -199,9 +291,6 @@
       </section>
     </div>
   </div>
-
-  <!-- Load the main script as ES module -->
-  <script type="module" src="/main.js"></script>
 </body>
 
 </html>

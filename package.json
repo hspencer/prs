@@ -3,26 +3,7 @@
   "version": "1.0.0",
   "description": "Towards a Generative Pictographic System for Cognitive Accessibility and Inclusive Communication",
   "private": true,
-  "keywords": [
-    "AAC",
-    "cognitive",
-    "accessibility",
-    "pictograms",
-    "practice-based",
-    "research",
-    "semantic",
-    "primitives",
-    "HTML",
-    "presentation"
-  ],
   "homepage": "https://hspencer.github.io/prs/",
-  "bugs": {
-    "url": "https://github.com/hspencer/prs/issues"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/hspencer/prs.git"
-  },
   "license": "MIT",
   "author": "Herbert Spencer <hspencer@ead.cl>",
   "type": "module",
@@ -31,17 +12,13 @@
   },
   "scripts": {
     "dev": "vite",
-    "build": "vite build --base=/prs/",
-    "preview": "vite preview",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist -b gh-pages -t true -u \"Herbert Spencer <hspencer@ead.cl>\" -m \"deploy $(date -u +'%F %T UTC')\" -v",
-    "postdeploy": "git switch -"
+    "build": "vite build",
+    "preview": "vite preview"
   },
   "dependencies": {
     "reveal.js": "^5.2.1"
   },
   "devDependencies": {
-    "gh-pages": "^6.3.0",
     "sass": "^1.91.0",
     "vite": "^7.0.6"
   }

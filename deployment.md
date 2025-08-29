@@ -274,3 +274,12 @@ git push origin main
 5. Proceed with deployment.
 6. If remote looks stale, run the worktree diff to confirm the published files match the build.
 
+### Secuencia recomendada
+
+```bash
+npx gh-pages-clean       
+rm -rf docs              
+npm ci || npm install
+npm run build            
+test -f docs/index.html && echo "OK: docs listo" || echo "ERROR: falta docs/index.html"
+```

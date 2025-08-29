@@ -50,7 +50,7 @@ function chronologySketchFactory(parentEl){
 
     p.setup = function () {
       hostW = parentEl.clientWidth || 960;
-      hostH = parentEl.clientHeight || 420;
+      hostH = parentEl.clientHeight - 200 || 420;
       const c = p.createCanvas(hostW, hostH);
       c.parent(parentEl);
       thisYear = new Date().getFullYear();
