@@ -113,9 +113,6 @@ body {
                 font-weight: 200;
             }
 
-            &.author{
-                
-            }
 
             &.question{
 
@@ -138,6 +135,29 @@ body {
                     break-inside: avoid;
                     padding: 0 .71ex .23ex .7ex;
                     background-color: #e2a8f540;
+                }
+            }
+        }
+        .credentials{
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+
+            .author{
+            line-height: 100%;
+            margin: 0 0 2em 0;
+                
+            }
+
+            .tutors{
+                dt, dl{
+                    font-size: 75%;
+                }
+                dt{
+                    font-weight: 300;
+                    margin: 0 0 0 2em;
+                }
+                dl{
+                    margin: 0 0 0 4em;
                 }
             }
         }
