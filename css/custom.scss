@@ -7,8 +7,6 @@
 
 /* 1️⃣ Variables tipográficas */
 $font-family-base: 'Lexend',
-Helvetica,
-Arial,
 sans-serif;
 $font-size-base: 1.2rem; // 16px
 $line-height-base: 1.5;
@@ -18,12 +16,11 @@ $primary-color: #460556;
 $secondary-color: #ff6600;
 
 /* 3️⃣ Sobrescribe variables de Reveal (si las usa) */
-$background-color: #d7c8e9; // Fondo de la presentación
-$color: #00000092; // Color de texto
+$background-color: #e0e7ed; // Fondo de la presentación
+$color: #141414c2; // Color de texto
 
 /* Long shadow 
         para usar:
-
         @include long-shadow(20, 2px, 2px, 0, rgba(251, 255, 16, 0.083)); */
 @mixin long-shadow($steps: 50, $dx: 1px, $dy: 1px, $blur: 0, $color: rgba(0, 0, 0, .3)) {
     $shadows: ();
@@ -65,20 +62,6 @@ body {
     .slides {
         line-height: $line-height-base;
         text-align: left;
-        /*
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h6,
-        li,
-        th,
-        td,
-        p,
-        pre {
-            text-align: left;
-        } */
 
         .title {
             font-size: 4.2rem;
@@ -89,79 +72,83 @@ body {
             display: inline-block;
             position: relative;
 
-            /* Máscara: mismo texto recorta fondo (gradiente 50% + imagen detrás) */
             background:
-                linear-gradient(135deg, rgba(184, 133, 5, 0.621), rgba(246, 36, 242, 0.249)),
-                url('/images/texture-21.jpg');
+                linear-gradient(135deg, rgba(242, 174, 2, 0.621), rgba(175, 19, 2, 0.942)),
+                url('/images/texture-22.jpg');
             background-size: cover;
             background-position: center;
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
             background-blend-mode: normal;
-            &:after{
-                content: '';
-                text-shadow: inset 1px 1px 1px black;
-            }
         }
 
-        p{
-                &.tagline {
+        p {
+            &.tagline {
                 margin: 0;
-                font-size: 2rem;
+                font-size: 1.2rem;
+                letter-spacing: 0.75ex;
+                color: transparentize($color, 0.3);
                 text-transform: uppercase;
                 font-weight: 200;
             }
 
 
-            &.question{
-
-                $color: #371780;
-
-                font-weight: 450;
+            &.huge {
+                font-weight: 750;
                 line-height: 140%;
                 font-size: 3.5rem;
                 mix-blend-mode: lighten;
                 color: $color;
-                text-shadow: -2px -1px 1px #f9df888b;
-                
-                span{
+
+                span {
+                    $color: #C00;
                     transform-origin: center;
                     transform: rotate(-1.5deg);
-                    font-weight: 550;
-                    border: .033ex solid $color;
                     border-radius: .21ex;
                     display: inline-block;
                     break-inside: avoid;
                     padding: 0 .71ex .23ex .7ex;
-                    background-color: #e2a8f540;
+                    color: $color;
+                    background-color: transparentize($color, .8);
                 }
             }
         }
-        .credentials{
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
 
-            .author{
-            line-height: 100%;
-            margin: 0 0 2em 0;
-                
+        .credentials {
+            display: grid;
+            font-size: 75%;
+            line-height: 110%;
+            grid-template-columns: 1fr 1fr 1fr;
+            margin: 1.5em 0 0 0;
+
+            .author {
+                line-height: 100%;
+                margin: 0 0 2em 0;
+
             }
 
-            .tutors{
-                dt, dl{
-                    font-size: 75%;
-                }
-                dt{
+            .tutors {
+                dt {
                     font-weight: 300;
                     margin: 0 0 0 2em;
                 }
-                dl{
+
+                dl {
                     margin: 0 0 0 4em;
                 }
             }
+
+            div {
+                img.logo {
+                    position: absolute;
+                    bottom: 0;
+                    width: 4em;
+                    height: auto;
+                }
+            }
         }
-        
+
 
         table {
             width: 80%;
@@ -178,14 +165,6 @@ body {
             max-height: 80vh;
             max-width: 90%;
             height: auto;
-        }
-
-        img.logo {
-            position: relative;
-            margin: 0;
-            width: 5em;
-            height: auto;
-
         }
 
         .w {
@@ -325,5 +304,3 @@ body {
 .hljs-strong {
     font-weight: bold;
 }
-
-
