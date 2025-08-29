@@ -13,6 +13,9 @@ import Highlight from 'reveal.js/plugin/highlight/highlight.esm.js';
 
 
 // Importa tu SCSS (Vite compilará automáticamente)
+// main.js (arriba, junto a los plugins)
+import 'reveal.js/plugin/highlight/monokai.css';
+import './node_modules/reveal.js/css/reveal.scss';
 import './css/custom.scss';
 
 
@@ -24,7 +27,7 @@ const deck = new Reveal({
 document.addEventListener('DOMContentLoaded', () => {
   const deck = new Reveal({
     hash: true,
-    slideNumber: true,
+    slideNumber: false,
     transition: 'fade'
   });
 

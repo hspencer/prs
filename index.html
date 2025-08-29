@@ -70,6 +70,7 @@
       </section>
 
       <!-- Slide 3: Research question -->
+
       <section>
         <section>
           <p class="huge">
@@ -94,95 +95,125 @@
 
       <!-- SVG as Code ↔ SVG as Image - section of sections -->
       <section>
-        <section data-transition="fade">
+        <section id="svg-code-sync" data-transition="fade">
           <h2>SVG as Code ↔ SVG as Image</h2>
-          <div style="display: grid; grid-template-columns: 50% 50%; height: 500px; gap: 1rem;">
 
-            <!-- LEFT: Code -->
-            <div style="overflow:auto; font-size: 0.55em; line-height:1.2;">
-              <pre style="font-size: 85%; white-space: pre-wrap;">
-                <code code class="language-xml" data-trim>
-&lt;svg id=&quot;pictogram&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 100 100&quot;&gt;
-  &lt;!-- Make the bed  --&gt;
-  &lt;defs&gt;
-    &lt;style&gt;
-      .f {
-        fill: #fff;
-        stroke: #000;
-        stroke-linejoin: square;
-      }
-
-      .k {
-        fill: #000;
-        stroke: #FFF;
-        stroke-linejoin: square;
-      }
-    &lt;/style&gt;
-  &lt;/defs&gt;
-  &lt;g id=&quot;bed&quot;&gt;
-    &lt;path id=&quot;bed_frame&quot; class=&quot;f&quot;
-      d=&quot;M86.6,66.1l6.7,10.9v7.1h-5.1v5.1c0,.9-.7,1.6-1.6,1.6h-2.3c-.9,0-1.6-.7-1.6-1.6v-5.1h-38.2v5.1c0,.9-.7,1.6-1.6,1.6h-2.3c-.9,0-1.6-.7-1.6-1.6v-5.1h-5.1v-7.1l6.7-10.9v-18.5c0-1.3,1.1-2.4,2.4-2.4h41.3c1.3,0,2.4,1.1,2.4,2.4v18.5h-.1Z&quot; /&gt;
-    &lt;path id=&quot;matress&quot; class=&quot;f&quot;
-      d=&quot;M85.9,78.6h-44.4c-3,0-5.4-2.4-5.4-5.4v-1.9c0-1.5.7-3,1.8-4l7.7-6.8c1-.9,2.3-1.4,3.6-1.4h29c1.3,0,2.6.5,3.6,1.4l7.7,6.8c1.2,1,1.8,2.5,1.8,4v1.9c0,3-2.4,5.4-5.4,5.4Z&quot; /&gt;
-    &lt;path id=&quot;pillow&quot; class=&quot;f&quot;
-      d=&quot;M52.2,53.5h22.4c2.3,0,4.1,1.8,4.1,4h0c0,2.2-1.8,4-4.1,4h-22.4c-2.3,0-4.1-1.8-4.1-4h0c0-2.2,1.8-4,4.1-4Z&quot; /&gt;
-    &lt;path id=&quot;sheet&quot; class=&quot;f&quot;
-      d=&quot;M50.6,39.6c2.1,1.3,15.3,5.5,15.3,5.5,0,0-1.3,9.6-3.9,12.5-6.3,7.1-17.2,8.3-20.7,10.2s-3.4,9.7.8,10.8c-7.6.3-6.9-8.9-4.2-11.3s7.9-6.7,10.7-11.7c4.1-7.4,2.3-13.8,2-16Z&quot; /&gt;
-  &lt;/g&gt;
-  &lt;g id=&quot;person&quot;&gt;
-    &lt;path id=&quot;arm&quot; class=&quot;k&quot;
-      d=&quot;M29.9,37.5l4.2,7.8,6.7,3.7c1.1.6,1.5,2.1.7,3.2h0c-.6.8-1.7,1.1-2.6.7l-9.1-3.9-4.1-6.4&quot; /&gt;
-    &lt;path id=&quot;body&quot; class=&quot;k&quot;
-      d=&quot;M29,90.5l-4.9.2-5-35.6-3,18.9-4.2,17.1h-5l4.3-19.7.6-19.4c.2-2.1.2-3.2.6-5,0,0,.8-3.7,2-6.9s3.5-7.2,5.2-9.3l2.3-2.7c2.4-2.8,6.7-3.1,9.5-.7l2.1,1.8,7.6,9.2c.8.9,1.8,1.6,3,2l10,3c1.4.4,2.2,2,1.6,3.4h0c-.5,1.1-1.7,1.8-2.9,1.5l-13.7-3.3-9.1-7.5-4.9,7.5,4,45.5h0Z&quot; /&gt;
-    &lt;circle id=&quot;head&quot; class=&quot;k&quot; cx=&quot;38.9&quot; cy=&quot;19.9&quot; r=&quot;5.5&quot; /&gt;
-  &lt;/g&gt;
-&lt;/svg&gt;
-                </code>
+          <div style="display:grid;grid-template-columns:50% 50%;height:500px;gap:1rem;">
+            <!-- IZQUIERDA: código -->
+            <div style="overflow:auto;font-size:.55em;line-height:1.2;">
+              <pre style="font-size:90%;white-space:pre;">
+                <code id="svg-source" class="language-xml" data-line-numbers></code>
               </pre>
             </div>
 
-            <!-- RIGHT: Rendered SVG -->
-            <div style="display:flex; align-items:center; justify-content:center; background:#f8f8f8;">
-              <svg id="pictogram" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 100 100">
-                <!-- Make the bed  -->
-                <defs>
-                  <style>
-                    .f {
-                      fill: #fff;
-                      stroke: #000;
-                      stroke-linejoin: square;
-                    }
-
-                    .k {
-                      fill: #000;
-                      stroke: #FFF;
-                      stroke-linejoin: square;
-                    }
-                  </style>
-                </defs>
-                <g id="bed">
-                  <path id="bed_frame" class="f"
-                    d="M86.6,66.1l6.7,10.9v7.1h-5.1v5.1c0,.9-.7,1.6-1.6,1.6h-2.3c-.9,0-1.6-.7-1.6-1.6v-5.1h-38.2v5.1c0,.9-.7,1.6-1.6,1.6h-2.3c-.9,0-1.6-.7-1.6-1.6v-5.1h-5.1v-7.1l6.7-10.9v-18.5c0-1.3,1.1-2.4,2.4-2.4h41.3c1.3,0,2.4,1.1,2.4,2.4v18.5h-.1Z" />
-                  <path id="matress" class="f"
-                    d="M85.9,78.6h-44.4c-3,0-5.4-2.4-5.4-5.4v-1.9c0-1.5.7-3,1.8-4l7.7-6.8c1-.9,2.3-1.4,3.6-1.4h29c1.3,0,2.6.5,3.6,1.4l7.7,6.8c1.2,1,1.8,2.5,1.8,4v1.9c0,3-2.4,5.4-5.4,5.4Z" />
-                  <path id="pillow" class="f"
-                    d="M52.2,53.5h22.4c2.3,0,4.1,1.8,4.1,4h0c0,2.2-1.8,4-4.1,4h-22.4c-2.3,0-4.1-1.8-4.1-4h0c0-2.2,1.8-4,4.1-4Z" />
-                  <path id="sheet" class="f"
-                    d="M50.6,39.6c2.1,1.3,15.3,5.5,15.3,5.5,0,0-1.3,9.6-3.9,12.5-6.3,7.1-17.2,8.3-20.7,10.2s-3.4,9.7.8,10.8c-7.6.3-6.9-8.9-4.2-11.3s7.9-6.7,10.7-11.7c4.1-7.4,2.3-13.8,2-16Z" />
-                </g>
-                <g id="person">
-                  <path id="arm" class="k"
-                    d="M29.9,37.5l4.2,7.8,6.7,3.7c1.1.6,1.5,2.1.7,3.2h0c-.6.8-1.7,1.1-2.6.7l-9.1-3.9-4.1-6.4" />
-                  <path id="body" class="k"
-                    d="M29,90.5l-4.9.2-5-35.6-3,18.9-4.2,17.1h-5l4.3-19.7.6-19.4c.2-2.1.2-3.2.6-5,0,0,.8-3.7,2-6.9s3.5-7.2,5.2-9.3l2.3-2.7c2.4-2.8,6.7-3.1,9.5-.7l2.1,1.8,7.6,9.2c.8.9,1.8,1.6,3,2l10,3c1.4.4,2.2,2,1.6,3.4h0c-.5,1.1-1.7,1.8-2.9,1.5l-13.7-3.3-9.1-7.5-4.9,7.5,4,45.5h0Z" />
-                  <circle id="head" class="k" cx="38.9" cy="19.9" r="5.5" />
-                </g>
-              </svg>
+            <!-- DERECHA: SVG externo -->
+            <div style="display:flex;align-items:center;justify-content:center;background:#9c9b9b;">
+              <object id="pictogram-object" type="image/svg+xml" data="/images/svg/pictogram.svg"></object>
             </div>
           </div>
+
+          <aside class="notes">
+            Hover or click an <code>id</code> on either side to highlight both the code snippet and the SVG element.
+          </aside>
         </section>
-        <section data-background-image="images/svg-as-code.png" data-transition="fade"></section>
+
+        <!-- script del highlight mágico -->
+         <script type="module">
+            (function() {
+              const slide = document.querySelector('#svg-code-sync');
+              if (!slide || slide.dataset.syncInit === '1') return;
+              slide.dataset.syncInit = '1';
+
+              const codeEl = slide.querySelector('#svg-source');
+              const objEl  = slide.querySelector('#pictogram-object');
+              if (!codeEl || !objEl) return;
+
+              const url = objEl.getAttribute('data');
+
+              // Utilidades de escape/templating
+              const escapeHTML = s => s
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;');
+
+              // 1) Cargar el SVG como texto y renderizarlo en el bloque <code>
+              fetch(url).then(r => r.text()).then(svgText => {
+                // Escapa TODO el SVG
+                let html = escapeHTML(svgText);
+
+                // Envuelve SOLO el valor del id="…"
+                // Acepta comillas crudas o &quot; ya que trabajamos sobre el texto escapado.
+                html = html.replace(
+                  /id=&quot;([^&]+?)&quot;/g,
+                  (_m, idval) => `id=&quot;<span class="code-id" data-id="${idval}">${idval}</span>&quot;`
+                );
+
+                // Inyecta como HTML (seguimos escapados, solo añadimos spans)
+                codeEl.innerHTML = html;
+
+                // 2) Enlazar cuando el <object> tenga su DOM
+                if (objEl.contentDocument && objEl.contentDocument.querySelector('svg')) {
+                  bindInteractions();
+                } else {
+                  objEl.addEventListener('load', bindInteractions, { once: true });
+                }
+              });
+
+              function bindInteractions() {
+                const svgDoc  = objEl.contentDocument;
+                const svgRoot = svgDoc && svgDoc.querySelector('svg');
+                if (!svgRoot || slide.dataset.bound === '1') return;
+                slide.dataset.bound = '1';
+
+                // Hover sync
+                const setSelected = (id, on) => {
+                  // SVG lado
+                  const svgNode = svgRoot.querySelector(`#${CSS.escape(id)}`);
+                  if (svgNode) svgNode.classList.toggle('is-selected', on);
+
+                  // Código lado (puede haber más de una aparición del mismo id en el texto)
+                  codeEl.querySelectorAll(`.code-id[data-id="${CSS.escape(id)}"]`)
+                        .forEach(span => span.classList.toggle('is-selected', on));
+                };
+
+                // Delegación: Código → SVG (hover puro)
+                codeEl.addEventListener('mouseover', (e) => {
+                  const t = e.target.closest('.code-id');
+                  if (!t) return;
+                  setSelected(t.dataset.id, true);
+                });
+                codeEl.addEventListener('mouseout', (e) => {
+                  const t = e.target.closest('.code-id');
+                  if (!t) return;
+                  setSelected(t.dataset.id, false);
+                });
+
+                // Delegación: SVG → Código (hover puro)
+                // (no usamos delegación por event bubbling cross-doc, adjuntamos a cada nodo con id)
+                svgRoot.querySelectorAll('[id]').forEach(node => {
+                  const id = node.id;
+                  node.style.cursor = 'pointer';
+                  node.addEventListener('mouseenter', () => setSelected(id, true));
+                  node.addEventListener('mouseleave', () => setSelected(id, false));
+                });
+
+                // Limpieza básica al cambiar de slide (si usas Reveal)
+                if (window.Reveal?.on) {
+                  const clear = () => {
+                    svgRoot.querySelectorAll('.is-selected').forEach(n => n.classList.remove('is-selected'));
+                    codeEl.querySelectorAll('.is-selected').forEach(n => n.classList.remove('is-selected'));
+                  };
+                  window.Reveal.on('slidechanged', clear);
+                  window.Reveal.on('fragmenthidden', clear);
+                  window.Reveal.on('fragmentshown', clear);
+                }
+              }
+            })();
+         </script> 
+        
       </section>
+      <!-- fin de code-as-svg -->
 
 
       <!-- PictoNet Generative Pipeline -->
@@ -191,6 +222,9 @@
         <section data-background-color="#FFF">
           <h2>PictoNet Generative Pipeline</h2>
           <p class="tagline">From text input to adaptive pictogram output</p>
+          <section class="w">
+            <iframe class="web-window pipeline" src="https://herbertspencer.net/expo-casiopea/014-neural-network/" frameborder="0"></iframe>
+          </section>
           <aside class="notes">
             Esta sección introduce las fases del pipeline de PictoNet, mostrando cómo un enunciado se transforma en un
             pictograma generativo, editable y culturalmente sensible.
@@ -200,6 +234,7 @@
         <!-- Fase 1 -->
         <section>
           <h3>1. Text Input</h3>
+          <object data="/images/svg/icon-" type=""></object>
           <p>The user provides a short phrase or utterance.<br><em>Language defaults to Spanish but can be
               configured.</em></p>
           <aside class="notes">El punto de partida: un enunciado breve que será procesado para generar pictogramas.
@@ -280,8 +315,8 @@
           <li>Design has a structural responsibility to pre-empt exclusion</li>
           <li>Pictograms as generative, situated artefacts—bridging AI and design</li>
         </ul>
-        <aside>
-          Stress the ethical duty: not only tools, but infrastructures that enable agency and belonging.
+        <aside class="notes">
+          Cognitive extension, not only tools, but infrastructures that enable agency and belonging.
           Cite accessibility laws (NZ, Canada, Chile, etc.).
           Emphasise that design itself often encodes exclusion—hence the urgency of this research.
         </aside>
@@ -297,7 +332,7 @@
           <li>Proposes participatory, federated learning models for cultural adaptation</li>
           <li>Envisions a pictographic commons: an open-source evolving visual language</li>
         </ul>
-        <aside>
+        <aside class="notes">
           Highlight shift: cognitive accessibility as aesthetic and epistemological.
           Users move from passive recipients to co-creators of meaning.
           Shared commons counters fragmentation and personalisation silos.
@@ -315,7 +350,7 @@
           <li>Reinforcement Learning with Human Feedback (RLHF)</li>
           <li>Open-source, Creative Commons licensed</li>
         </ul>
-        <aside>
+        <aside class="notes">
           Present PictoNet as the “core engine” of the research.
           Mention the lineage from PICTOS → Lectogram → PictoNet.
           Stress SVG as code: transparent, inspectable, modifiable.
@@ -333,7 +368,7 @@
           <li>Supports iterative correction and validation</li>
           <li>Extends design practice into everyday AAC use</li>
         </ul>
-        <aside>
+        <aside class="notes">
           PictoForge = continuation of design tools.
           Emphasise user agency: co-edit, correct, and refine the model.
           It bridges professional design practice and lived AAC use.
@@ -342,14 +377,14 @@
 
       <!-- Slide 9: Distributed Model / MediaFranca -->
       <section>
-        <h2>Distributed Model: MediaFranca</h2>
+        <h2>MediaFranca</h2>
         <ul>
           <li><strong>PictoNet</strong>: speech-to-SVG generative core</li>
           <li><strong>PictoForge</strong>: editor and feedback interface</li>
           <li><strong>MediaFranca</strong>: federated architecture for shared intelligence</li>
         </ul>
         <p>Each community contributes local adaptations → aggregated into a shared pictographic commons.</p>
-        <aside>
+        <aside class="notes">
           Explain the universal–local paradox in AAC.
           MediaFranca allows plural visual heritages without losing collective coherence.
           Governance: validation, contribution roles, reputation systems.
@@ -366,7 +401,7 @@
           <li>Double-diamond, practice-based: making, reflecting, refining</li>
           <li>Two intertwined tracks: relational & ontological</li>
         </ul>
-        <aside>
+        <aside class="notes">
           Show the Double-Diamond Double-Track figure.
           Stress practice-based approach: knowledge is produced through making pictograms, errors, corrections.
           Iterative cycles link theory and practice.
