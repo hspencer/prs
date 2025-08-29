@@ -99,15 +99,15 @@ body {
                 color: $color;
 
                 span {
-                    $color: #016a5e75;
+                    $colorz: #016a5e75;
                     transform-origin: center;
                     transform: rotate(-1.5deg);
                     border-radius: .21ex;
                     display: inline-block;
                     break-inside: avoid;
                     padding: 0 .71ex .23ex .7ex;
-                    color: $color;
-                    background-color: transparentize($color, .8);
+                    color: $colorz;
+                    background-color: #016a5e33;
                     border: .13ex solid;
                     font-weight: 300;
                 }
@@ -207,7 +207,7 @@ body {
                 transform: translate(-50%, -5%) scale(0.77);
             }
 
-            &.pipeline{
+            &.pipeline {
                 height: 50vh;
                 margin-top: 4em;
                 padding-top: 1em;
@@ -234,25 +234,21 @@ body {
 #svg-code-sync {
   $col: #00d2ff;
 
-  /* Código: solo el valor del id="…" envuelto como .code-id */
-  .code-id {
+  .code-node {
     border-radius: .35em;
-    padding: .05em .2em;
+    padding: .2em .25em;
     transition: outline-color .12s ease, background .12s ease;
   }
-  .code-id.is-selected {
+  .code-node.is-selected {
     outline: 2px solid $col;
     outline-offset: 3px;
     background: rgba(0,210,255,.10);
   }
 
-  /* SVG: halo sin mover geometría */
   svg .is-selected {
     filter: drop-shadow(0 0 .35rem $col) drop-shadow(0 0 .15rem $col);
     transition: filter .12s ease;
   }
-
-  pre { margin: 0; }
 }
 
 /* code highlight */

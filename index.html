@@ -37,6 +37,7 @@
             <dt>Advisor</dt>
             <dl>Dr. Welby Ings</dl>
           </div>
+          
           <div class="flex-container"><img class="logo" src="images/AUT.jpg" alt="Auckland University of Technology"></div>
           
         </div>
@@ -46,6 +47,7 @@
 
       <!-- Slide 2: About Me  -->
       <section data-background-color="#FFF" >
+
 
         <section class="w" data-transition="grow">
           <iframe class="web-window" src="https://wiki.ead.pucv.cl/Herbert_Spencer" frameborder="0"></iframe>
@@ -79,7 +81,7 @@
           </p>
         </section>
 
-        <section class="w">
+        <section data-background-color="#FFF" data-transition="fade">
          <img src="images/core-board.png" alt="Core Board as used in New Zealand" class="r-stretch">
         </section>
 
@@ -99,6 +101,7 @@
           <h2>SVG as Code ↔ SVG as Image</h2>
 
           <div style="display:grid;grid-template-columns:50% 50%;height:500px;gap:1rem;">
+            
             <!-- IZQUIERDA: código -->
             <div style="overflow:auto;font-size:.55em;line-height:1.2;">
               <pre style="font-size:90%;white-space:pre;">
@@ -106,111 +109,158 @@
               </pre>
             </div>
 
-            <!-- DERECHA: SVG externo -->
-            <div style="display:flex;align-items:center;justify-content:center;background:#9c9b9b;">
-              <object id="pictogram-object" type="image/svg+xml" data="/images/svg/pictogram.svg"></object>
-            </div>
+            <!-- DERECHA: contenedor para SVG inline (sustituye el <object> existente) -->
+            <div id="svg-stage" style="display:flex;align-items:center;justify-content:center;background:#9c9b9b;"></div>
+
+          <script type="module">
+(() => {
+  const slide  = document.querySelector('#svg-code-sync');
+  if (!slide || slide.dataset.syncInit === '1') return;
+  slide.dataset.syncInit = '1';
+
+  const codeEl = slide.querySelector('#svg-source');
+  const stage  = slide.querySelector('#svg-stage');
+  if (!codeEl || !stage) return;
+
+  const svgURL = new URL('images/svg/pictogram.svg', document.baseURI).toString();
+
+  // ----------
+  // utilidades
+  // ----------
+  const esc = s => s.replace(/&/g,'&amp;').replace(/</g,'&lt;')
+                    .replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+
+  function wrapBlockById(text, id, k) {
+    const reOpen = new RegExp(`<([a-zA-Z][\\w:-]*)\\b[^>]*\\bid=(["'])${id}\\2[^>]*>`);
+    const m = reOpen.exec(text);
+    if (!m) return text;
+    const tag = m[1], openStart = m.index, openEnd = m.index + m[0].length;
+
+    if (m[0].endsWith('/>')) {
+      return text.slice(0, openStart) + `__MF_START_${k}__` +
+             text.slice(openStart, openEnd) + `__MF_END_${k}__` +
+             text.slice(openEnd);
+    }
+    let depth = 1, i = openEnd, reAny = new RegExp(`<\\/?${tag}\\b[^>]*>`, 'g'); reAny.lastIndex = i;
+    for (;;) {
+      const nx = reAny.exec(text); if (!nx) break;
+      const tok = nx[0];
+      if (tok.startsWith(`</${tag}`)) depth--; else if (!tok.endsWith('/>')) depth++;
+      i = nx.index + tok.length; if (depth === 0) break;
+    }
+    return text.slice(0, openStart) + `__MF_START_${k}__` +
+           text.slice(openStart, i) + `__MF_END_${k}__` +
+           text.slice(i);
+  }
+
+  function markAllBlocks(svgText) {
+    const ids = new Set(); let m;
+    const re = /\bid=(["'])([^"']+)\1/g;
+    while ((m = re.exec(svgText))) ids.add(m[2]);
+    let txt = svgText, k = 0;
+    for (const id of ids) { txt = wrapBlockById(txt, id, k); k++; }
+    return { txt, total: k };
+  }
+
+  function wrapCommentsIntoSpans(root) {
+    const walker = document.createTreeWalker(root, NodeFilter.SHOW_COMMENT, null);
+    const starts = new Map(); const pairs = [];
+    let node;
+    while ((node = walker.nextNode())) {
+      const s = node.data.match(/^MF_START_(\d+)$/);
+      const e = node.data.match(/^MF_END_(\d+)$/);
+      if (s) starts.set(s[1], node);
+      if (e) {
+        const i = e[1], st = starts.get(i);
+        if (st) pairs.push({ i, startNode: st, endNode: node });
+      }
+    }
+    pairs.forEach(({ i, startNode, endNode }) => {
+      const range = document.createRange();
+      range.setStartAfter(startNode);
+      range.setEndBefore(endNode);
+
+      const span = document.createElement('span');
+      span.className = 'code-node';
+      span.dataset.mfI = i;
+
+      const fragText = range.cloneContents().textContent || '';
+      const m = fragText.match(/\bid\s*=\s*["']([^"']+)["']/);
+      if (m) span.dataset.id = m[1];
+
+      try { range.surroundContents(span); } catch {}
+      startNode.remove(); endNode.remove();
+    });
+  }
+
+  function bindSync(svgEl) {
+    const idMap = new Map();
+    svgEl.querySelectorAll('[id]').forEach(n => idMap.set(n.id, n));
+
+    const setSel = (id,on) => {
+      const node = idMap.get(id);
+      if (node) node.classList.toggle('is-selected', on);
+      codeEl.querySelectorAll(`.code-node[data-id="${CSS.escape(id)}"]`)
+            .forEach(n => n.classList.toggle('is-selected', on));
+    };
+
+    // código → svg
+    codeEl.addEventListener('mouseover', e => {
+      const t = e.target.closest('.code-node'); if (t) setSel(t.dataset.id, true);
+    });
+    codeEl.addEventListener('mouseout', e => {
+      const t = e.target.closest('.code-node'); if (t) setSel(t.dataset.id, false);
+    });
+
+    // svg → código
+    idMap.forEach((node, id) => {
+      node.style.cursor = 'pointer';
+      node.addEventListener('mouseenter', () => setSel(id, true));
+      node.addEventListener('mouseleave', () => setSel(id, false));
+    });
+  }
+
+  // -------------
+  // carga principal
+  // -------------
+  fetch(svgURL).then(r => r.text()).then(svgText => {
+    // (1) marcar bloques en texto
+    const { txt, total } = markAllBlocks(svgText);
+
+    // (2) escapar todo y convertir marcadores en **comentarios HTML reales**
+    let html = esc(txt);
+    for (let i = 0; i < total; i++) {
+      html = html
+        .replaceAll(esc(`__MF_START_${i}__`), `<!--MF_START_${i}-->`)
+        .replaceAll(esc(`__MF_END_${i}__`),   `<!--MF_END_${i}-->`);
+    }
+
+    // (3) ahora sí, usar innerHTML (comentarios quedan como nodos, el resto está escapado)
+    codeEl.innerHTML = html;
+
+    // (4) ejecutar Prism si existe
+    if (window.Prism?.highlightElement) window.Prism.highlightElement(codeEl);
+
+    // (5) envolver los rangos delimitados por los comentarios en <span.code-node>
+    //     usar raf para asegurarnos que Prism ya reescribió el DOM
+    requestAnimationFrame(() => {
+      wrapCommentsIntoSpans(codeEl);
+    });
+
+    // (6) inyectar el SVG inline y enlazar interacciones
+    stage.innerHTML = svgText;
+    const svgEl = stage.querySelector('svg');
+    bindSync(svgEl);
+  });
+})();
+          </script>
+
           </div>
 
           <aside class="notes">
             Hover or click an <code>id</code> on either side to highlight both the code snippet and the SVG element.
           </aside>
         </section>
-
-        <!-- script del highlight mágico -->
-         <script type="module">
-            (function() {
-              const slide = document.querySelector('#svg-code-sync');
-              if (!slide || slide.dataset.syncInit === '1') return;
-              slide.dataset.syncInit = '1';
-
-              const codeEl = slide.querySelector('#svg-source');
-              const objEl  = slide.querySelector('#pictogram-object');
-              if (!codeEl || !objEl) return;
-
-              const url = objEl.getAttribute('data');
-
-              // Utilidades de escape/templating
-              const escapeHTML = s => s
-                .replace(/&/g, '&amp;')
-                .replace(/</g, '&lt;')
-                .replace(/>/g, '&gt;')
-                .replace(/"/g, '&quot;');
-
-              // 1) Cargar el SVG como texto y renderizarlo en el bloque <code>
-              fetch(url).then(r => r.text()).then(svgText => {
-                // Escapa TODO el SVG
-                let html = escapeHTML(svgText);
-
-                // Envuelve SOLO el valor del id="…"
-                // Acepta comillas crudas o &quot; ya que trabajamos sobre el texto escapado.
-                html = html.replace(
-                  /id=&quot;([^&]+?)&quot;/g,
-                  (_m, idval) => `id=&quot;<span class="code-id" data-id="${idval}">${idval}</span>&quot;`
-                );
-
-                // Inyecta como HTML (seguimos escapados, solo añadimos spans)
-                codeEl.innerHTML = html;
-
-                // 2) Enlazar cuando el <object> tenga su DOM
-                if (objEl.contentDocument && objEl.contentDocument.querySelector('svg')) {
-                  bindInteractions();
-                } else {
-                  objEl.addEventListener('load', bindInteractions, { once: true });
-                }
-              });
-
-              function bindInteractions() {
-                const svgDoc  = objEl.contentDocument;
-                const svgRoot = svgDoc && svgDoc.querySelector('svg');
-                if (!svgRoot || slide.dataset.bound === '1') return;
-                slide.dataset.bound = '1';
-
-                // Hover sync
-                const setSelected = (id, on) => {
-                  // SVG lado
-                  const svgNode = svgRoot.querySelector(`#${CSS.escape(id)}`);
-                  if (svgNode) svgNode.classList.toggle('is-selected', on);
-
-                  // Código lado (puede haber más de una aparición del mismo id en el texto)
-                  codeEl.querySelectorAll(`.code-id[data-id="${CSS.escape(id)}"]`)
-                        .forEach(span => span.classList.toggle('is-selected', on));
-                };
-
-                // Delegación: Código → SVG (hover puro)
-                codeEl.addEventListener('mouseover', (e) => {
-                  const t = e.target.closest('.code-id');
-                  if (!t) return;
-                  setSelected(t.dataset.id, true);
-                });
-                codeEl.addEventListener('mouseout', (e) => {
-                  const t = e.target.closest('.code-id');
-                  if (!t) return;
-                  setSelected(t.dataset.id, false);
-                });
-
-                // Delegación: SVG → Código (hover puro)
-                // (no usamos delegación por event bubbling cross-doc, adjuntamos a cada nodo con id)
-                svgRoot.querySelectorAll('[id]').forEach(node => {
-                  const id = node.id;
-                  node.style.cursor = 'pointer';
-                  node.addEventListener('mouseenter', () => setSelected(id, true));
-                  node.addEventListener('mouseleave', () => setSelected(id, false));
-                });
-
-                // Limpieza básica al cambiar de slide (si usas Reveal)
-                if (window.Reveal?.on) {
-                  const clear = () => {
-                    svgRoot.querySelectorAll('.is-selected').forEach(n => n.classList.remove('is-selected'));
-                    codeEl.querySelectorAll('.is-selected').forEach(n => n.classList.remove('is-selected'));
-                  };
-                  window.Reveal.on('slidechanged', clear);
-                  window.Reveal.on('fragmenthidden', clear);
-                  window.Reveal.on('fragmentshown', clear);
-                }
-              }
-            })();
-         </script> 
         
       </section>
       <!-- fin de code-as-svg -->
