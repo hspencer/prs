@@ -102,7 +102,7 @@
             
             <!-- IZQUIERDA: código -->
             <div style="overflow:auto;font-size:.55em;line-height:1.2;">
-              <pre style="font-size:90%;white-space:pre;">
+              <pre style="font-size:85%;white-space:pre;margin-left: 2em;">
                 <code id="svg-source" class="language-xml" data-line-numbers></code>
               </pre>
             </div>
@@ -112,147 +112,147 @@
 
            <!-- script del round trip hightlight -->
             <script type="module">
-(() => {
-  const slide  = document.querySelector('#svg-code-sync');
-  if (!slide || slide.dataset.syncInit === '1') return;
-  slide.dataset.syncInit = '1';
+            (() => {
+              const slide  = document.querySelector('#svg-code-sync');
+              if (!slide || slide.dataset.syncInit === '1') return;
+              slide.dataset.syncInit = '1';
 
-  const codeEl = slide.querySelector('#svg-source');
-  const stage  = slide.querySelector('#svg-stage');
-  if (!codeEl || !stage) return;
+              const codeEl = slide.querySelector('#svg-source');
+              const stage  = slide.querySelector('#svg-stage');
+              if (!codeEl || !stage) return;
 
-  const svgURL = new URL('images/svg/pictogram.svg', document.baseURI).toString();
+              const svgURL = new URL('svg/pictogram.svg', document.baseURI).toString();
 
-  // ----------
-  // utilidades
-  // ----------
-  const esc = s => s.replace(/&/g,'&amp;').replace(/</g,'&lt;')
-                    .replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+              // ----------
+              // utilidades
+              // ----------
+              const esc = s => s.replace(/&/g,'&amp;').replace(/</g,'&lt;')
+                                .replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 
-  function wrapBlockById(text, id, k) {
-    const reOpen = new RegExp(`<([a-zA-Z][\\w:-]*)\\b[^>]*\\bid=(["'])${id}\\2[^>]*>`);
-    const m = reOpen.exec(text);
-    if (!m) return text;
-    const tag = m[1], openStart = m.index, openEnd = m.index + m[0].length;
+              function wrapBlockById(text, id, k) {
+                const reOpen = new RegExp(`<([a-zA-Z][\\w:-]*)\\b[^>]*\\bid=(["'])${id}\\2[^>]*>`);
+                const m = reOpen.exec(text);
+                if (!m) return text;
+                const tag = m[1], openStart = m.index, openEnd = m.index + m[0].length;
 
-    if (m[0].endsWith('/>')) {
-      return text.slice(0, openStart) + `__MF_START_${k}__` +
-             text.slice(openStart, openEnd) + `__MF_END_${k}__` +
-             text.slice(openEnd);
-    }
-    let depth = 1, i = openEnd, reAny = new RegExp(`<\\/?${tag}\\b[^>]*>`, 'g'); reAny.lastIndex = i;
-    for (;;) {
-      const nx = reAny.exec(text); if (!nx) break;
-      const tok = nx[0];
-      if (tok.startsWith(`</${tag}`)) depth--; else if (!tok.endsWith('/>')) depth++;
-      i = nx.index + tok.length; if (depth === 0) break;
-    }
-    return text.slice(0, openStart) + `__MF_START_${k}__` +
-           text.slice(openStart, i) + `__MF_END_${k}__` +
-           text.slice(i);
-  }
+                if (m[0].endsWith('/>')) {
+                  return text.slice(0, openStart) + `__MF_START_${k}__` +
+                        text.slice(openStart, openEnd) + `__MF_END_${k}__` +
+                        text.slice(openEnd);
+                }
+                let depth = 1, i = openEnd, reAny = new RegExp(`<\\/?${tag}\\b[^>]*>`, 'g'); reAny.lastIndex = i;
+                for (;;) {
+                  const nx = reAny.exec(text); if (!nx) break;
+                  const tok = nx[0];
+                  if (tok.startsWith(`</${tag}`)) depth--; else if (!tok.endsWith('/>')) depth++;
+                  i = nx.index + tok.length; if (depth === 0) break;
+                }
+                return text.slice(0, openStart) + `__MF_START_${k}__` +
+                      text.slice(openStart, i) + `__MF_END_${k}__` +
+                      text.slice(i);
+              }
 
-  function markAllBlocks(svgText) {
-    const ids = new Set(); let m;
-    const re = /\bid=(["'])([^"']+)\1/g;
-    while ((m = re.exec(svgText))) ids.add(m[2]);
-    let txt = svgText, k = 0;
-    for (const id of ids) { txt = wrapBlockById(txt, id, k); k++; }
-    return { txt, total: k };
-  }
+              function markAllBlocks(svgText) {
+                const ids = new Set(); let m;
+                const re = /\bid=(["'])([^"']+)\1/g;
+                while ((m = re.exec(svgText))) ids.add(m[2]);
+                let txt = svgText, k = 0;
+                for (const id of ids) { txt = wrapBlockById(txt, id, k); k++; }
+                return { txt, total: k };
+              }
 
-  function wrapCommentsIntoSpans(root) {
-    const walker = document.createTreeWalker(root, NodeFilter.SHOW_COMMENT, null);
-    const starts = new Map(); const pairs = [];
-    let node;
-    while ((node = walker.nextNode())) {
-      const s = node.data.match(/^MF_START_(\d+)$/);
-      const e = node.data.match(/^MF_END_(\d+)$/);
-      if (s) starts.set(s[1], node);
-      if (e) {
-        const i = e[1], st = starts.get(i);
-        if (st) pairs.push({ i, startNode: st, endNode: node });
-      }
-    }
-    pairs.forEach(({ i, startNode, endNode }) => {
-      const range = document.createRange();
-      range.setStartAfter(startNode);
-      range.setEndBefore(endNode);
+              function wrapCommentsIntoSpans(root) {
+                const walker = document.createTreeWalker(root, NodeFilter.SHOW_COMMENT, null);
+                const starts = new Map(); const pairs = [];
+                let node;
+                while ((node = walker.nextNode())) {
+                  const s = node.data.match(/^MF_START_(\d+)$/);
+                  const e = node.data.match(/^MF_END_(\d+)$/);
+                  if (s) starts.set(s[1], node);
+                  if (e) {
+                    const i = e[1], st = starts.get(i);
+                    if (st) pairs.push({ i, startNode: st, endNode: node });
+                  }
+                }
+                pairs.forEach(({ i, startNode, endNode }) => {
+                  const range = document.createRange();
+                  range.setStartAfter(startNode);
+                  range.setEndBefore(endNode);
 
-      const span = document.createElement('span');
-      span.className = 'code-node';
-      span.dataset.mfI = i;
+                  const span = document.createElement('span');
+                  span.className = 'code-node';
+                  span.dataset.mfI = i;
 
-      const fragText = range.cloneContents().textContent || '';
-      const m = fragText.match(/\bid\s*=\s*["']([^"']+)["']/);
-      if (m) span.dataset.id = m[1];
+                  const fragText = range.cloneContents().textContent || '';
+                  const m = fragText.match(/\bid\s*=\s*["']([^"']+)["']/);
+                  if (m) span.dataset.id = m[1];
 
-      try { range.surroundContents(span); } catch {}
-      startNode.remove(); endNode.remove();
-    });
-  }
+                  try { range.surroundContents(span); } catch {}
+                  startNode.remove(); endNode.remove();
+                });
+              }
 
-  function bindSync(svgEl) {
-    const idMap = new Map();
-    svgEl.querySelectorAll('[id]').forEach(n => idMap.set(n.id, n));
+              function bindSync(svgEl) {
+                const idMap = new Map();
+                svgEl.querySelectorAll('[id]').forEach(n => idMap.set(n.id, n));
 
-    const setSel = (id,on) => {
-      const node = idMap.get(id);
-      if (node) node.classList.toggle('is-selected', on);
-      codeEl.querySelectorAll(`.code-node[data-id="${CSS.escape(id)}"]`)
-            .forEach(n => n.classList.toggle('is-selected', on));
-    };
+                const setSel = (id,on) => {
+                  const node = idMap.get(id);
+                  if (node) node.classList.toggle('is-selected', on);
+                  codeEl.querySelectorAll(`.code-node[data-id="${CSS.escape(id)}"]`)
+                        .forEach(n => n.classList.toggle('is-selected', on));
+                };
 
-    // código → svg
-    codeEl.addEventListener('mouseover', e => {
-      const t = e.target.closest('.code-node'); if (t) setSel(t.dataset.id, true);
-    });
-    codeEl.addEventListener('mouseout', e => {
-      const t = e.target.closest('.code-node'); if (t) setSel(t.dataset.id, false);
-    });
+                // código → svg
+                codeEl.addEventListener('mouseover', e => {
+                  const t = e.target.closest('.code-node'); if (t) setSel(t.dataset.id, true);
+                });
+                codeEl.addEventListener('mouseout', e => {
+                  const t = e.target.closest('.code-node'); if (t) setSel(t.dataset.id, false);
+                });
 
-    // svg → código
-    idMap.forEach((node, id) => {
-      node.style.cursor = 'pointer';
-      node.addEventListener('mouseenter', () => setSel(id, true));
-      node.addEventListener('mouseleave', () => setSel(id, false));
-    });
-  }
+                // svg → código
+                idMap.forEach((node, id) => {
+                  node.style.cursor = 'pointer';
+                  node.addEventListener('mouseenter', () => setSel(id, true));
+                  node.addEventListener('mouseleave', () => setSel(id, false));
+                });
+              }
 
-  // -------------
-  // carga principal
-  // -------------
-  fetch(svgURL).then(r => r.text()).then(svgText => {
-    // (1) marcar bloques en texto
-    const { txt, total } = markAllBlocks(svgText);
+              // -------------
+              // carga principal
+              // -------------
+              fetch(svgURL).then(r => r.text()).then(svgText => {
+                // (1) marcar bloques en texto
+                const { txt, total } = markAllBlocks(svgText);
 
-    // (2) escapar todo y convertir marcadores en **comentarios HTML reales**
-    let html = esc(txt);
-    for (let i = 0; i < total; i++) {
-      html = html
-        .replaceAll(esc(`__MF_START_${i}__`), `<!--MF_START_${i}-->`)
-        .replaceAll(esc(`__MF_END_${i}__`),   `<!--MF_END_${i}-->`);
-    }
+                // (2) escapar todo y convertir marcadores en **comentarios HTML reales**
+                let html = esc(txt);
+                for (let i = 0; i < total; i++) {
+                  html = html
+                    .replaceAll(esc(`__MF_START_${i}__`), `<!--MF_START_${i}-->`)
+                    .replaceAll(esc(`__MF_END_${i}__`),   `<!--MF_END_${i}-->`);
+                }
 
-    // (3) ahora sí, usar innerHTML (comentarios quedan como nodos, el resto está escapado)
-    codeEl.innerHTML = html;
+                // (3) ahora sí, usar innerHTML (comentarios quedan como nodos, el resto está escapado)
+                codeEl.innerHTML = html;
 
-    // (4) ejecutar Prism si existe
-    if (window.Prism?.highlightElement) window.Prism.highlightElement(codeEl);
+                // (4) ejecutar Prism si existe
+                if (window.Prism?.highlightElement) window.Prism.highlightElement(codeEl);
 
-    // (5) envolver los rangos delimitados por los comentarios en <span.code-node>
-    //     usar raf para asegurarnos que Prism ya reescribió el DOM
-    requestAnimationFrame(() => {
-      wrapCommentsIntoSpans(codeEl);
-    });
+                // (5) envolver los rangos delimitados por los comentarios en <span.code-node>
+                //     usar raf para asegurarnos que Prism ya reescribió el DOM
+                requestAnimationFrame(() => {
+                  wrapCommentsIntoSpans(codeEl);
+                });
 
-    // (6) inyectar el SVG inline y enlazar interacciones
-    stage.innerHTML = svgText;
-    const svgEl = stage.querySelector('svg');
-    bindSync(svgEl);
-  });
-})();
-</script>
+                // (6) inyectar el SVG inline y enlazar interacciones
+                stage.innerHTML = svgText;
+                const svgEl = stage.querySelector('svg');
+                bindSync(svgEl);
+              });
+            })();
+            </script>
 
           </div>
 
@@ -272,7 +272,7 @@
           <h2>PictoNet Generative Pipeline</h2>
           <p class="tagline">From text input to adaptive pictogram output</p>
           
-          <object data="/images/svg/pipeline.svg" type="" style="max-width: 90%;"></object>
+          <object data="/svg/pipeline.svg" type="" style="max-width: 90%;"></object>
 
           <aside class="notes">
             Esta sección introduce las fases del pipeline de PictoNet, mostrando cómo un enunciado se transforma en un
@@ -282,35 +282,30 @@
 
         <!-- Fase 1 -->
         <section>
-          <h3>Text Input</h3>
-          <object data="/images/svg/icon-word.svg"></object>
-          <p>The user provides a short phrase or utterance.<br><em>Language defaults to Spanish but can be
-              configured.</em></p>
+          
+          <object data="/svg/icon-word.svg"></object>
+          <h3>Textual input (communicative intent)</h3>
+          <p>The user provides a short phrase or utterance.</p>
           <aside class="notes">El punto de partida: un enunciado breve que será procesado para generar pictogramas.
           </aside>
         </section>
 
         <!-- Fase 2 -->
         <section>
+          
+          <object data="/svg/icon-nsm.svg"></object>
           <h3>Encoding, tokenisation & visual tokenisation</h3>
-          <object data="/images/svg/icon-word.svg"></object>
           <p>Processes input into semantic units using NSM primitives, identifying iconisable elements and sentence
             type.</p>
-          <aside class="notes">Aquí se fragmenta el enunciado en tokens visuales con base en NSM.</aside>
-        </section>
-
-        <!-- Fase 3 -->
-        <section>
-          <h3>Act of speech classification</h3>
-          <object data="/images/svg/icon-nsm.svg"></object>
           <p>Identifies the communicative intent (assertive, volitive, emotive, directive, hypothetical).</p>
           <aside class="notes">Se reconoce la intención comunicativa, lo cual guía el renderizado visual.</aside>
         </section>
 
         <!-- Fase 4 -->
         <section>
+          
+          <object data="/svg/icon-blend.svg"></object>
           <h3>Conceptual blending</h3>
-          <object data="/images/svg/icon-blend.svg"></object>
           <p>Combines action, object, and modifiers into composite visual concepts.</p>
           <aside class="notes">El blending integra metáforas y conceptos abstractos en formas visuales comprensibles.
           </aside>
@@ -318,8 +313,10 @@
 
         <!-- Fase 5 -->
         <section>
+          
+          <object data="/svg/icon-compose.svg"></object>
           <h3>Layout planning & composition</h3>
-          <object data="/images/svg/icon-compose.svg"></object>
+
           <p>Determines spatial arrangement of pictographic components according to semantic weight and syntax.</p>
           <p>Selects and layers graphical assets into a coherent pictogram with defined visual grammar.</p>
           <aside class="notes">El planificador define jerarquías visuales y disposición espacial.</aside>
@@ -327,23 +324,25 @@
 
         <!-- Fase 6 -->
         <section>
+          
+          <object data="/svg/icon-style.svg"></object>
           <h3>Local Configuration</h3>
-          <object data="/images/svg/icon-style.svg"></object>
           <p>Applies user preferences (stroke weight, colour, density, animation tolerance).</p>
           <aside class="notes">El sistema se adapta a necesidades perceptuales o culturales de cada usuario.</aside>
         </section>
 
         <!-- Fase 7 -->
         <section>
+          
+          <object data="/svg/icon-pictogram.svg"></object>
           <h3>Output & Metadata</h3>
-          <object data="/images/svg/icon-pictogram.svg"></object>
           <p>Generates the final SVG with embedded metadata and prepares optional feedback signals for RLHF.</p>
           <aside class="notes">El resultado es un SVG legible y editable, con trazabilidad semántica.</aside>
         </section>
       </section>
 
       <!-- PictoForge -->
-      <section data-background-image="images/pictoforge.png"></section>
+      <section data-background-image="svg/pictonet-board.svg"></section>
       <!-- Slide 4: The pictogram pipeline: The model as a generator -->
 
       <!-- Slide 5: Rationale -->
