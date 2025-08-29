@@ -20,32 +20,34 @@
     <div class="slides">
 
       <!-- Slide 1: Title  -->
-      <section data-background-color="#FFF">
-        <p class="tagline">Postgraduate Research Symposium, 2025</p>
+      <section data-background-color="#FFF" data-transition="concave">
+        <p class="tagline">Postgraduate Research Symposium 2025</p>
         <h1 class="title">Towards a Generative Pictographic System for Cognitive Accessibility and Inclusive
           Communication</h1>
         <div class="credentials">
           <div class="author">
             <strong>Herbert Spencer González</strong><br>
-            PhD Design Student<br>
+            PhD Student in Design<br>
           </div>
+
           <div class="tutors">
             <dt>Supervisors</dt>
-            <dl>Marcos Steagall</dl>
-            <dl>Ivana Nakarada-Kordic</dl>
+            <dl>Dr. Marcos Steagall</dl>
+            <dl>Dr. Ivana Nakarada-Kordic</dl>
             <dt>Advisor</dt>
-            <dl>Welby Ings</dl>
+            <dl>Dr. Welby Ings</dl>
           </div>
-          <img class="logo" src="images/AUT.jpg" alt="Auckland University of Technology">
+          <div class="flex-container"><img class="logo" src="images/AUT.jpg" alt="Auckland University of Technology"></div>
+          
         </div>
 
 
       </section>
 
       <!-- Slide 2: About Me  -->
-      <section data-background-color="#FFF" data-transition="grow">
+      <section data-background-color="#FFF" >
 
-        <section class="w">
+        <section class="w" data-transition="grow">
           <iframe class="web-window" src="https://wiki.ead.pucv.cl/Herbert_Spencer" frameborder="0"></iframe>
         </section>
 
@@ -63,18 +65,21 @@
           <div class="p5-host" data-sketch="chronology"></div>
         </section>
 
-        <section data-background-image="images/ktm.jpg"></section>
+        
 
       </section>
 
       <!-- Slide 3: Research question -->
       <section>
-        <section
-          data-background-gradient="linear-gradient(173deg,rgba(139, 217, 247, 1) 0%, rgba(214, 207, 250, 1) 44%, rgba(245, 194, 181, 1) 99%)">
-          <p class="question">
-            How can a generative pictographic system <span data-transition="grow">be designed</span> to support
+        <section>
+          <p class="huge">
+            How can a generative pictographic system <span data-transition="grow" class="hatched">be designed</span> to support
             communication for people with complex communication needs?
           </p>
+        </section>
+
+        <section class="w">
+         <img src="images/core-board.png" alt="Core Board as used in New Zealand" class="r-stretch">
         </section>
 
         <section class="w">
@@ -95,36 +100,45 @@
 
             <!-- LEFT: Code -->
             <div style="overflow:auto; font-size: 0.55em; line-height:1.2;">
-              <pre style="font-size: 85%; white-space: pre-wrap;"><code class="language-xml" data-trim data-noescape>
-              &lt;svg id="pictogram" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 100 100"&gt;
-                &lt;!-- Make the bed  --&gt;
-                &lt;defs&gt;
-                  &lt;style&gt;
-                    .f {
-                      fill: #fff;
-                      stroke: #000;
-                      stroke-linejoin: square;
-                    }
-                    .k {
-                      fill: #000;
-                      stroke: #FFF;
-                      stroke-linejoin: square;
-                    }
-                  &lt;/style&gt;
-                &lt;/defs&gt;
-                &lt;g id="bed"&gt;
-                  &lt;path id="bed_frame" class="f" d="M86.6,66.1l6.7,10.9v7.1h-5.1v5.1c0,.9-.7,1.6-1.6,1.6h-2.3c-.9,0-1.6-.7-1.6-1.6v-5.1h-38.2v5.1c0,.9-.7,1.6-1.6,1.6h-2.3c-.9,0-1.6-.7-1.6-1.6v-5.1h-5.1v-7.1l6.7-10.9v-18.5c0-1.3,1.1-2.4,2.4-2.4h41.3c1.3,0,2.4,1.1,2.4,2.4v18.5h-.1Z"/&gt;
-                  &lt;path id="matress" class="f" d="M85.9,78.6h-44.4c-3,0-5.4-2.4-5.4-5.4v-1.9c0-1.5.7-3,1.8-4l7.7-6.8c1-.9,2.3-1.4,3.6-1.4h29c1.3,0,2.6.5,3.6,1.4l7.7,6.8c1.2,1,1.8,2.5,1.8,4v1.9c0,3-2.4,5.4-5.4,5.4Z"/&gt;
-                  &lt;path id="pillow" class="f" d="M52.2,53.5h22.4c2.3,0,4.1,1.8,4.1,4h0c0,2.2-1.8,4-4.1,4h-22.4c-2.3,0-4.1-1.8-4.1-4h0c0-2.2,1.8-4,4.1-4Z"/&gt;
-                  &lt;path id="sheet" class="f" d="M50.6,39.6c2.1,1.3,15.3,5.5,15.3,5.5,0,0-1.3,9.6-3.9,12.5-6.3,7.1-17.2,8.3-20.7,10.2s-3.4,9.7.8,10.8c-7.6.3-6.9-8.9-4.2-11.3s7.9-6.7,10.7-11.7c4.1-7.4,2.3-13.8,2-16Z"/&gt;
-                &lt;/g&gt;
-                &lt;g id="person"&gt;
-                  &lt;path id="arm" class="k" d="M29.9,37.5l4.2,7.8,6.7,3.7c1.1.6,1.5,2.1.7,3.2h0c-.6.8-1.7,1.1-2.6.7l-9.1-3.9-4.1-6.4"/&gt;
-                  &lt;path id="body" class="k" d="M29,90.5l-4.9.2-5-35.6-3,18.9-4.2,17.1h-5l4.3-19.7.6-19.4c.2-2.1.2-3.2.6-5,0,0,.8-3.7,2-6.9s3.5-7.2,5.2-9.3l2.3-2.7c2.4-2.8,6.7-3.1,9.5-.7l2.1,1.8,7.6,9.2c.8.9,1.8,1.6,3,2l10,3c1.4.4,2.2,2,1.6,3.4h0c-.5,1.1-1.7,1.8-2.9,1.5l-13.7-3.3-9.1-7.5-4.9,7.5,4,45.5h0Z"/&gt;
-                  &lt;circle id="head" class="k" cx="38.9" cy="19.9" r="5.5"/&gt;
-                &lt;/g&gt;
-              &lt;/svg&gt;
-                    </code></pre>
+              <pre style="font-size: 85%; white-space: pre-wrap;">
+                <code code class="language-xml" data-trim>
+&lt;svg id=&quot;pictogram&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 100 100&quot;&gt;
+  &lt;!-- Make the bed  --&gt;
+  &lt;defs&gt;
+    &lt;style&gt;
+      .f {
+        fill: #fff;
+        stroke: #000;
+        stroke-linejoin: square;
+      }
+
+      .k {
+        fill: #000;
+        stroke: #FFF;
+        stroke-linejoin: square;
+      }
+    &lt;/style&gt;
+  &lt;/defs&gt;
+  &lt;g id=&quot;bed&quot;&gt;
+    &lt;path id=&quot;bed_frame&quot; class=&quot;f&quot;
+      d=&quot;M86.6,66.1l6.7,10.9v7.1h-5.1v5.1c0,.9-.7,1.6-1.6,1.6h-2.3c-.9,0-1.6-.7-1.6-1.6v-5.1h-38.2v5.1c0,.9-.7,1.6-1.6,1.6h-2.3c-.9,0-1.6-.7-1.6-1.6v-5.1h-5.1v-7.1l6.7-10.9v-18.5c0-1.3,1.1-2.4,2.4-2.4h41.3c1.3,0,2.4,1.1,2.4,2.4v18.5h-.1Z&quot; /&gt;
+    &lt;path id=&quot;matress&quot; class=&quot;f&quot;
+      d=&quot;M85.9,78.6h-44.4c-3,0-5.4-2.4-5.4-5.4v-1.9c0-1.5.7-3,1.8-4l7.7-6.8c1-.9,2.3-1.4,3.6-1.4h29c1.3,0,2.6.5,3.6,1.4l7.7,6.8c1.2,1,1.8,2.5,1.8,4v1.9c0,3-2.4,5.4-5.4,5.4Z&quot; /&gt;
+    &lt;path id=&quot;pillow&quot; class=&quot;f&quot;
+      d=&quot;M52.2,53.5h22.4c2.3,0,4.1,1.8,4.1,4h0c0,2.2-1.8,4-4.1,4h-22.4c-2.3,0-4.1-1.8-4.1-4h0c0-2.2,1.8-4,4.1-4Z&quot; /&gt;
+    &lt;path id=&quot;sheet&quot; class=&quot;f&quot;
+      d=&quot;M50.6,39.6c2.1,1.3,15.3,5.5,15.3,5.5,0,0-1.3,9.6-3.9,12.5-6.3,7.1-17.2,8.3-20.7,10.2s-3.4,9.7.8,10.8c-7.6.3-6.9-8.9-4.2-11.3s7.9-6.7,10.7-11.7c4.1-7.4,2.3-13.8,2-16Z&quot; /&gt;
+  &lt;/g&gt;
+  &lt;g id=&quot;person&quot;&gt;
+    &lt;path id=&quot;arm&quot; class=&quot;k&quot;
+      d=&quot;M29.9,37.5l4.2,7.8,6.7,3.7c1.1.6,1.5,2.1.7,3.2h0c-.6.8-1.7,1.1-2.6.7l-9.1-3.9-4.1-6.4&quot; /&gt;
+    &lt;path id=&quot;body&quot; class=&quot;k&quot;
+      d=&quot;M29,90.5l-4.9.2-5-35.6-3,18.9-4.2,17.1h-5l4.3-19.7.6-19.4c.2-2.1.2-3.2.6-5,0,0,.8-3.7,2-6.9s3.5-7.2,5.2-9.3l2.3-2.7c2.4-2.8,6.7-3.1,9.5-.7l2.1,1.8,7.6,9.2c.8.9,1.8,1.6,3,2l10,3c1.4.4,2.2,2,1.6,3.4h0c-.5,1.1-1.7,1.8-2.9,1.5l-13.7-3.3-9.1-7.5-4.9,7.5,4,45.5h0Z&quot; /&gt;
+    &lt;circle id=&quot;head&quot; class=&quot;k&quot; cx=&quot;38.9&quot; cy=&quot;19.9&quot; r=&quot;5.5&quot; /&gt;
+  &lt;/g&gt;
+&lt;/svg&gt;
+                </code>
+              </pre>
             </div>
 
             <!-- RIGHT: Rendered SVG -->
@@ -361,13 +375,11 @@
 
       <!-- Thank you, contact & information -->
       <section data-background-color="#f0f0f0" data-transition="fade">
-        <h2>Contact</h2>
-        <p>
-          Herbert Spencer González<br />
-          <a href="mailto:herbert.spencer@aut.ac.nz">herbert.spencer@aut.ac.nz</a>
+        <h2>Thank you</h2>
+        <p>Herbert Spencer González<br />
+          <a href="mailto:herbert.spencer@aut.ac.nz">herbert.spencer@aut.ac.nz</a></p>
 
         <p>This presentation lives at <a href="http://herbertspencer.net/prs">http://herbertspencer.net/prs</a></p>
-        </p>
 
 
       </section>

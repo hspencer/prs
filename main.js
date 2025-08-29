@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const deck = new Reveal({
     hash: true,
     slideNumber: true,
-    transition: 'slide'
+    transition: 'fade'
   });
 
   deck.initialize().then(() => {

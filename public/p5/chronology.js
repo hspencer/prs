@@ -55,7 +55,7 @@ function chronologySketchFactory(parentEl){
       c.parent(parentEl);
       thisYear = new Date().getFullYear();
       for (const y in yearEvents) fadeValues[y] = 255;
-      p.textFont('Alegreya Sans, system-ui');
+      p.textFont('Lexend');
     };
 
     p.windowResized = function () {
