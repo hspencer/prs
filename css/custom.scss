@@ -2,17 +2,17 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&family=Outfit:wght@100..900&display=swap');
 
-/* 1️⃣ Variables tipográficas */
+/* Variables tipográficas */
 $font-family-base: 'Lexend',
 sans-serif;
 $font-size-base: 1.2rem; // 16px
 $line-height-base: 1.5;
 
-/* 2️⃣ Colores (puedes usar los de Reveal como base) */
+/* Colores (puedes usar los de Reveal como base) */
 $primary-color: #460556;
 $secondary-color: #ff6600;
 
-/* 3️⃣ Sobrescribe variables de Reveal (si las usa) */
+/* Sobrescribe variables de Reveal (si las usa) */
 $background-color: #e0e7ed; // Fondo de la presentación
 $color: #141414c2; // Color de texto
 
@@ -33,7 +33,7 @@ $color: #141414c2; // Color de texto
 }
 
 
-/* 4️⃣ Estilos globales */
+/* Estilos globales */
 body {
     font-family: $font-family-base;
     font-size: $font-size-base;
@@ -44,13 +44,13 @@ body {
 
 
 
-/* 5️⃣ Sobrescribe clases de Reveal (ejemplo) */
+/* Sobrescribe clases de Reveal (ejemplo) */
 .reveal .slide-background {
     background-size: cover;
     background-position: center;
 }
 
-/* 6️⃣ Si quieres usar variables CSS (custom properties) */
+/* Si quieres usar variables CSS (custom properties) */
 :root {
     --r-background: $background-color;
     --r-color: $color;
@@ -95,41 +95,40 @@ body {
             }
 
             &.huge {
-                font-weight: 750;
-                line-height: 140%;
+                font-weight: 179;
+                line-height: 124%;
                 font-size: 3.5rem;
+                padding: 0 6ex 0 2.3em;
                 mix-blend-mode: lighten;
-                color: $color;
+                color: rgb(2, 32, 44);
 
                 span {
-                    $colorz: #016a5e75;
                     transform-origin: center;
                     transform: rotate(-1.5deg);
-                    border-radius: .21ex;
+                    border-radius: 0.21ex;
                     display: inline-block;
                     break-inside: avoid;
-                    padding: 0 .71ex .23ex .7ex;
-                    color: $colorz;
-                    background-color: #016a5e33;
-                    border: .13ex solid;
+                    padding: 0 0.23ex 0.123ex 0.27ex;
+                    color: rgb(74 203 189 / 95%);
+                    background-color: rgb(1 106 94 / 12%);
+                    border: 0.013ex solid #80aba429;
                     font-weight: 300;
                 }
+            }
+            &.question{
+              padding: 0 3m;
             }
         }
 
         .credentials {
             display: grid;
             font-size: 75%;
-            line-height: 110%;
+            line-height: 160%;
             font-size: 75%;
-            line-height: 110%;
             grid-template-columns: 1fr 1fr 1fr;
             margin: 1.5em 0 0 0;
-            margin: 1.5em 0 0 0;
-
 
             .author {
-                line-height: 100%;
                 margin: 0 0 2em 0;
 
             }
@@ -191,52 +190,41 @@ body {
         }
 
         .web-window {
-            border: 1px solid rgba(0, 0, 0, 0.156);
+              /* Marco y estética */
+            border: 1px solid rgba(0, 0, 0, 0.16);
             border-radius: 1.34ex;
             box-shadow:
-                0 1ex 5px rgba(0, 0, 0, 0.14),
-                0 0.66ex 10px rgba(0, 0, 0, 0.35),
-                0 0.33ex 30px rgba(0, 0, 0, 0.2);
+              0 1ex 5px rgba(0, 0, 0, 0.14),
+              0 .66ex 10px rgba(0, 0, 0, 0.35),
+              0 .33ex 30px rgba(0, 0, 0, 0.20);
+            overflow: hidden;
+            background: #fff;
 
-            // centrado absoluto con márgenes iguales
-            position: absolute;
-            top: 50%;
-            left: 50%;
+            /* Centrando y limitando tamaño de manera fluida */
+            margin-inline: auto;       /* centra horizontalmente dentro de la slide */
+            display: grid;             /* para que el iframe llene el contenedor */
+            place-items: stretch;      /* iframe a 100% */
+            width: min(85vw, 1200px);
+            height: min(85vh, 800px);
 
-            transform-origin: center;
-            transform: translate(-50%, 0) scale(.9);
 
+              &.pictogramas   { height: min(82vh, 860px); }
+              &.pipeline      { height: min(55vh, 650px); }
 
-            // ocupa hasta 85% de la pantalla en ambos ejes
-            width: 100vw;
-            height: 65vh;
-
-            &.pictogramas {
-                height: 79vh;
-                transform: translate(-50%, -5%) scale(0.77);
-            }
-
-            &.pipeline {
-                height: 50vh;
-                margin-top: 4em;
-                padding-top: 1em;
-            }
-
-            // si la ventana es muy chica, limita
-            max-width: 110%;
-            max-height: 800px;
-
+        
             // el iframe adentro
-            iframe {
+              iframe {
                 width: 100%;
                 height: 100%;
-                border: none;
-                border-radius: inherit;
-            }
+                border: 0;
+                border-radius: inherit; /* hereda esquinas redondeadas del marco */
+              }
         }
     }
 }
 
+.zoom125{zoom: 1.25;}
+.zoom133{zoom: 1.33;}
 
 
 /* highlight */
