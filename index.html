@@ -28,6 +28,7 @@
           <div class="author">
             <strong>Herbert Spencer González</strong><br>
             PhD Student in Design<br>
+            <span>See this presentation at <a href="https://herbertspencer.net/prs">herbertspencer.net/prs</a></span>
           </div>
 
 
@@ -38,74 +39,82 @@
             <dt>Advisor</dt>
             <dl>Dr. Welby Ings</dl>
           </div>
-          
-          <div class="flex-container"><img class="logo" src="images/AUT.jpg" alt="Auckland University of Technology"></div>
-          
+
+          <div class="flex-container"><img class="logo" src="images/AUT.jpg" alt="Auckland University of Technology">
+          </div>
+
         </div>
 
 
       </section>
 
       <!-- Slide 2: About Me  -->
-      <section data-background-color="#FFF" >
+      <section data-background-color="#FFF">
 
-
-        <section
-          data-background-iframe="https://wiki.ead.pucv.cl/Herbert_Spencer"
-          data-background-interactive
-          data-background-opacity="1"
-          class="zoom125"
-        >
-          <aside class="notes">
-            Fondo interactivo: no hay “marco” visual. Ideal para demos a pantalla completa.
-          </aside>
+        <!-- Casiopea  -->
+        <section data-background-iframe="https://wiki.ead.pucv.cl/Herbert_Spencer" data-background-interactive
+          data-background-opacity="1" class="zoom166">
         </section>
 
+        <!-- Aromos  -->
         <section data-background-image="images/aromos.jpg"></section>
 
-        <section data-background-image="images/family-2.jpg"></section>
+        <!-- Familias  -->
+        <section data-background-color="black">
+          <h2 style="color:rgba(255, 255, 255, 0.383)">My families and tribes </h2>
+          <div style="display: flex; justify-content: center; align-items: center; height: 30vh;">
+            <img src="images/family.jpg" alt="la familia" class="mask fit" style="max-width: 50%; z-index: 4;">
+            <img src="images/family-2.jpg" alt="la familia" class="mask fit"
+              style="max-width: 67%; margin-left: -38%; z-index: 3;">
+            <img src="images/nucleo.jpg" alt="la familia" class="mask fit"
+              style="max-width: 50%; margin-left: -33%; z-index: 2;">
+            <img src="images/nucleo-2.jpg" alt="la familia" class="mask fit"
+              style="max-width: 60%; margin-left: -29%; z-index: 1;">
+          </div>
+        </section>
 
-        <section data-background-image="images/pictos-metro.jpg"></section>
+        <!-- Inclusive Research and cognitive accessibility  -->
+        <section data-background-image="images/pictos-metro.jpg">
+          <img src="images/pictos-vertical.jpg" alt="PICTOS App in use" class="fragment mask fade-in fit">
+        </section>
 
+        <!-- PICTOS Service  -->
         <section class="w">
           <img class="fit" src="images/pictos-service.png" alt="PICTOS SERVICE ARCHITECTURE">
         </section>
 
+        <!-- Exponential tech growth  -->
         <section class="w">
           <div class="p5-host" data-sketch="chronology"></div>
+        </section>
+
+        <!-- Distance  -->
+        <section data-background-image="images/earth.png">
         </section>
 
       </section>
 
       <!-- Slide 3: Research question -->
-
       <section>
         <section>
           <p class="huge question">
-            How can a generative pictographic system <span data-transition="grow" class="hatched">be designed</span> to support
+            How can a generative pictographic system <span>be designed</span> to support
             communication for people with complex communication needs?
           </p>
         </section>
 
         <section data-background-color="#FFF" data-transition="fade">
-         <img src="images/core-board.png" alt="Core Board as used in New Zealand" class="r-stretch">
+          <img src="images/core-board.png" alt="Core Board as used in New Zealand" class="r-stretch">
         </section>
 
-        <section
-          data-background-iframe="https://pictogramas.pictos.cl"
-          data-background-interactive
-          data-background-opacity="1"
-          class="zoom125"
-        >
+        <section data-background-iframe="https://pictogramas.pictos.cl" data-background-interactive
+          data-background-opacity="1" class="zoom125">
           <aside class="notes">
             Fondo interactivo: no hay “marco” visual. Ideal para demos a pantalla completa.
           </aside>
         </section>
 
-        <section
-          data-background-iframe="https://hspencer.github.io/lectogram" frameborder="0"
-          class="zoom133"
-          >
+        <section data-background-iframe="https://hspencer.github.io/lectogram" frameborder="0" class="zoom133">
         </section>
 
       </section>
@@ -116,7 +125,7 @@
           <h2>Text as Image</h2>
 
           <div style="display:grid;grid-template-columns:50% 50%;height:500px;gap:1rem;">
-            
+
             <!-- IZQUIERDA: código -->
             <div style="overflow:auto;font-size:.55em;line-height:1.2;">
               <pre style="font-size:85%;white-space:pre;margin-left: 2em;">
@@ -125,150 +134,185 @@
             </div>
 
             <!-- DERECHA: contenedor para SVG inline (sustituye el <object> existente) -->
-            <div id="svg-stage" style="display:flex;align-items:center;justify-content:center;background:#9c9b9b;"></div>
+            <div id="svg-stage" style="display:flex;align-items:center;justify-content:center;background:#9c9b9b;">
+            </div>
 
-           <!-- script del round trip hightlight -->
+            <!-- script del round trip hightlight -->
             <script type="module">
-            (() => {
-              const slide  = document.querySelector('#svg-code-sync');
-              if (!slide || slide.dataset.syncInit === '1') return;
-              slide.dataset.syncInit = '1';
+              (() => {
+                const slide = document.querySelector('#svg-code-sync');
+                if (!slide || slide.dataset.syncInit === '1') return;
+                slide.dataset.syncInit = '1';
 
-              const codeEl = slide.querySelector('#svg-source');
-              const stage  = slide.querySelector('#svg-stage');
-              if (!codeEl || !stage) return;
+                const codeEl = slide.querySelector('#svg-source');
+                const stage = slide.querySelector('#svg-stage');
+                if (!codeEl || !stage) return;
 
-              const svgURL = new URL('svg/pictogram.svg', document.baseURI).toString();
+                const svgURL = new URL('svg/pictogram.svg', document.baseURI).toString();
 
-              // ----------
-              // utilidades
-              // ----------
-              const esc = s => s.replace(/&/g,'&amp;').replace(/</g,'&lt;')
-                                .replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+                // ----------
+                // utilidades
+                // ----------
+                const esc = s => s.replace(/&/g, '&amp;').replace(/</g, '&lt;')
+                  .replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
-              function wrapBlockById(text, id, k) {
-                const reOpen = new RegExp(`<([a-zA-Z][\\w:-]*)\\b[^>]*\\bid=(["'])${id}\\2[^>]*>`);
-                const m = reOpen.exec(text);
-                if (!m) return text;
-                const tag = m[1], openStart = m.index, openEnd = m.index + m[0].length;
+                function wrapBlockById(text, id, k) {
+                  const reOpen = new RegExp(`<([a-zA-Z][\\w:-]*)\\b[^>]*\\bid=(["'])${id}\\2[^>]*>`);
+                  const m = reOpen.exec(text);
+                  if (!m) return text;
+                  const tag = m[1],
+                    openStart = m.index,
+                    openEnd = m.index + m[0].length;
 
-                if (m[0].endsWith('/>')) {
-                  return text.slice(0, openStart) + `__MF_START_${k}__` +
-                        text.slice(openStart, openEnd) + `__MF_END_${k}__` +
-                        text.slice(openEnd);
-                }
-                let depth = 1, i = openEnd, reAny = new RegExp(`<\\/?${tag}\\b[^>]*>`, 'g'); reAny.lastIndex = i;
-                for (;;) {
-                  const nx = reAny.exec(text); if (!nx) break;
-                  const tok = nx[0];
-                  if (tok.startsWith(`</${tag}`)) depth--; else if (!tok.endsWith('/>')) depth++;
-                  i = nx.index + tok.length; if (depth === 0) break;
-                }
-                return text.slice(0, openStart) + `__MF_START_${k}__` +
-                      text.slice(openStart, i) + `__MF_END_${k}__` +
-                      text.slice(i);
-              }
-
-              function markAllBlocks(svgText) {
-                const ids = new Set(); let m;
-                const re = /\bid=(["'])([^"']+)\1/g;
-                while ((m = re.exec(svgText))) ids.add(m[2]);
-                let txt = svgText, k = 0;
-                for (const id of ids) { txt = wrapBlockById(txt, id, k); k++; }
-                return { txt, total: k };
-              }
-
-              function wrapCommentsIntoSpans(root) {
-                const walker = document.createTreeWalker(root, NodeFilter.SHOW_COMMENT, null);
-                const starts = new Map(); const pairs = [];
-                let node;
-                while ((node = walker.nextNode())) {
-                  const s = node.data.match(/^MF_START_(\d+)$/);
-                  const e = node.data.match(/^MF_END_(\d+)$/);
-                  if (s) starts.set(s[1], node);
-                  if (e) {
-                    const i = e[1], st = starts.get(i);
-                    if (st) pairs.push({ i, startNode: st, endNode: node });
+                  if (m[0].endsWith('/>')) {
+                    return text.slice(0, openStart) + `__MF_START_${k}__` +
+                      text.slice(openStart, openEnd) + `__MF_END_${k}__` +
+                      text.slice(openEnd);
                   }
-                }
-                pairs.forEach(({ i, startNode, endNode }) => {
-                  const range = document.createRange();
-                  range.setStartAfter(startNode);
-                  range.setEndBefore(endNode);
-
-                  const span = document.createElement('span');
-                  span.className = 'code-node';
-                  span.dataset.mfI = i;
-
-                  const fragText = range.cloneContents().textContent || '';
-                  const m = fragText.match(/\bid\s*=\s*["']([^"']+)["']/);
-                  if (m) span.dataset.id = m[1];
-
-                  try { range.surroundContents(span); } catch {}
-                  startNode.remove(); endNode.remove();
-                });
-              }
-
-              function bindSync(svgEl) {
-                const idMap = new Map();
-                svgEl.querySelectorAll('[id]').forEach(n => idMap.set(n.id, n));
-
-                const setSel = (id,on) => {
-                  const node = idMap.get(id);
-                  if (node) node.classList.toggle('is-selected', on);
-                  codeEl.querySelectorAll(`.code-node[data-id="${CSS.escape(id)}"]`)
-                        .forEach(n => n.classList.toggle('is-selected', on));
-                };
-
-                // código → svg
-                codeEl.addEventListener('mouseover', e => {
-                  const t = e.target.closest('.code-node'); if (t) setSel(t.dataset.id, true);
-                });
-                codeEl.addEventListener('mouseout', e => {
-                  const t = e.target.closest('.code-node'); if (t) setSel(t.dataset.id, false);
-                });
-
-                // svg → código
-                idMap.forEach((node, id) => {
-                  node.style.cursor = 'pointer';
-                  node.addEventListener('mouseenter', () => setSel(id, true));
-                  node.addEventListener('mouseleave', () => setSel(id, false));
-                });
-              }
-
-              // -------------
-              // carga principal
-              // -------------
-              fetch(svgURL).then(r => r.text()).then(svgText => {
-                // (1) marcar bloques en texto
-                const { txt, total } = markAllBlocks(svgText);
-
-                // (2) escapar todo y convertir marcadores en **comentarios HTML reales**
-                let html = esc(txt);
-                for (let i = 0; i < total; i++) {
-                  html = html
-                    .replaceAll(esc(`__MF_START_${i}__`), `<!--MF_START_${i}-->`)
-                    .replaceAll(esc(`__MF_END_${i}__`),   `<!--MF_END_${i}-->`);
+                  let depth = 1,
+                    i = openEnd,
+                    reAny = new RegExp(`<\\/?${tag}\\b[^>]*>`, 'g');
+                  reAny.lastIndex = i;
+                  for (;;) {
+                    const nx = reAny.exec(text);
+                    if (!nx) break;
+                    const tok = nx[0];
+                    if (tok.startsWith(`</${tag}`)) depth--;
+                    else if (!tok.endsWith('/>')) depth++;
+                    i = nx.index + tok.length;
+                    if (depth === 0) break;
+                  }
+                  return text.slice(0, openStart) + `__MF_START_${k}__` +
+                    text.slice(openStart, i) + `__MF_END_${k}__` +
+                    text.slice(i);
                 }
 
-                // (3) ahora sí, usar innerHTML (comentarios quedan como nodos, el resto está escapado)
-                codeEl.innerHTML = html;
+                function markAllBlocks(svgText) {
+                  const ids = new Set();
+                  let m;
+                  const re = /\bid=(["'])([^"']+)\1/g;
+                  while ((m = re.exec(svgText))) ids.add(m[2]);
+                  let txt = svgText,
+                    k = 0;
+                  for (const id of ids) {
+                    txt = wrapBlockById(txt, id, k);
+                    k++;
+                  }
+                  return {
+                    txt,
+                    total: k
+                  };
+                }
 
-                // (4) ejecutar Prism si existe
-                if (window.Prism?.highlightElement) window.Prism.highlightElement(codeEl);
+                function wrapCommentsIntoSpans(root) {
+                  const walker = document.createTreeWalker(root, NodeFilter.SHOW_COMMENT, null);
+                  const starts = new Map();
+                  const pairs = [];
+                  let node;
+                  while ((node = walker.nextNode())) {
+                    const s = node.data.match(/^MF_START_(\d+)$/);
+                    const e = node.data.match(/^MF_END_(\d+)$/);
+                    if (s) starts.set(s[1], node);
+                    if (e) {
+                      const i = e[1],
+                        st = starts.get(i);
+                      if (st) pairs.push({
+                        i,
+                        startNode: st,
+                        endNode: node
+                      });
+                    }
+                  }
+                  pairs.forEach(({
+                    i,
+                    startNode,
+                    endNode
+                  }) => {
+                    const range = document.createRange();
+                    range.setStartAfter(startNode);
+                    range.setEndBefore(endNode);
 
-                // (5) envolver los rangos delimitados por los comentarios en <span.code-node>
-                //     usar raf para asegurarnos que Prism ya reescribió el DOM
-                requestAnimationFrame(() => {
-                  wrapCommentsIntoSpans(codeEl);
+                    const span = document.createElement('span');
+                    span.className = 'code-node';
+                    span.dataset.mfI = i;
+
+                    const fragText = range.cloneContents().textContent || '';
+                    const m = fragText.match(/\bid\s*=\s*["']([^"']+)["']/);
+                    if (m) span.dataset.id = m[1];
+
+                    try {
+                      range.surroundContents(span);
+                    } catch {}
+                    startNode.remove();
+                    endNode.remove();
+                  });
+                }
+
+                function bindSync(svgEl) {
+                  const idMap = new Map();
+                  svgEl.querySelectorAll('[id]').forEach(n => idMap.set(n.id, n));
+
+                  const setSel = (id, on) => {
+                    const node = idMap.get(id);
+                    if (node) node.classList.toggle('is-selected', on);
+                    codeEl.querySelectorAll(`.code-node[data-id="${CSS.escape(id)}"]`)
+                      .forEach(n => n.classList.toggle('is-selected', on));
+                  };
+
+                  // código → svg
+                  codeEl.addEventListener('mouseover', e => {
+                    const t = e.target.closest('.code-node');
+                    if (t) setSel(t.dataset.id, true);
+                  });
+                  codeEl.addEventListener('mouseout', e => {
+                    const t = e.target.closest('.code-node');
+                    if (t) setSel(t.dataset.id, false);
+                  });
+
+                  // svg → código
+                  idMap.forEach((node, id) => {
+                    node.style.cursor = 'pointer';
+                    node.addEventListener('mouseenter', () => setSel(id, true));
+                    node.addEventListener('mouseleave', () => setSel(id, false));
+                  });
+                }
+
+                // -------------
+                // carga principal
+                // -------------
+                fetch(svgURL).then(r => r.text()).then(svgText => {
+                  // (1) marcar bloques en texto
+                  const {
+                    txt,
+                    total
+                  } = markAllBlocks(svgText);
+
+                  // (2) escapar todo y convertir marcadores en **comentarios HTML reales**
+                  let html = esc(txt);
+                  for (let i = 0; i < total; i++) {
+                    html = html
+                      .replaceAll(esc(`__MF_START_${i}__`), `<!--MF_START_${i}-->`)
+                      .replaceAll(esc(`__MF_END_${i}__`), `<!--MF_END_${i}-->`);
+                  }
+
+                  // (3) ahora sí, usar innerHTML (comentarios quedan como nodos, el resto está escapado)
+                  codeEl.innerHTML = html;
+
+                  // (4) ejecutar Prism si existe
+                  if (window.Prism?.highlightElement) window.Prism.highlightElement(codeEl);
+
+                  // (5) envolver los rangos delimitados por los comentarios en <span.code-node>
+                  //     usar raf para asegurarnos que Prism ya reescribió el DOM
+                  requestAnimationFrame(() => {
+                    wrapCommentsIntoSpans(codeEl);
+                  });
+
+                  // (6) inyectar el SVG inline y enlazar interacciones
+                  stage.innerHTML = svgText;
+                  const svgEl = stage.querySelector('svg');
+                  bindSync(svgEl);
                 });
-
-                // (6) inyectar el SVG inline y enlazar interacciones
-                stage.innerHTML = svgText;
-                const svgEl = stage.querySelector('svg');
-                bindSync(svgEl);
-              });
-            })();
+              })();
             </script>
 
           </div>
@@ -277,207 +321,55 @@
             Hover or click an <code>id</code> on either side to highlight both the code snippet and the SVG element.
           </aside>
         </section>
-        
-      </section>
-      <!-- fin de code-as-svg -->
+
+      </section><!-- fin de code-as-svg -->
 
 
       <!-- PictoNet Generative Pipeline -->
       <section>
-        <!-- Título principal -->
-        <section data-background-color="#FFF">
-          <h2>PictoNet Generative Pipeline</h2>
-          <p class="tagline">From text input to adaptive pictogram output</p>
-          
-          <object data="/svg/pipeline.svg" type="" style="max-width: 90%;"></object>
+        <h2 class="">PictoNet Generative Pipeline</h2>
+        <p class="tagline">From text input to adaptive pictogram output</p>
 
-          <aside class="notes">
-            Esta sección introduce las fases del pipeline de PictoNet, mostrando cómo un enunciado se transforma en un
-            pictograma generativo, editable y culturalmente sensible.
-          </aside>
+        <section>
+          <object data="/svg/pipeline-1.svg" class="r-stretch"></object>
         </section>
 
-        <!-- Fase 1 -->
         <section>
-          
-          <object data="/svg/icon-word.svg"></object>
-          <h3>Textual input (communicative intent)</h3>
-          <p>The user provides a short phrase or utterance.</p>
-          <aside class="notes">El punto de partida: un enunciado breve que será procesado para generar pictogramas.
-          </aside>
+          <object data="/svg/pipeline-2.svg" class="r-stretch"></object>
         </section>
 
-        <!-- Fase 2 -->
         <section>
-          
-          <object data="/svg/icon-nsm.svg"></object>
-          <h3>Encoding, tokenisation & visual tokenisation</h3>
-          <p>Processes input into semantic units using NSM primitives, identifying iconisable elements and sentence
-            type.</p>
-          <p>Identifies the communicative intent (assertive, volitive, emotive, directive, hypothetical).</p>
-          <aside class="notes">Se reconoce la intención comunicativa, lo cual guía el renderizado visual.</aside>
-        </section>
-
-        <!-- Fase 4 -->
-        <section>
-          
-          <object data="/svg/icon-blend.svg"></object>
-          <h3>Conceptual blending</h3>
-          <p>Combines action, object, and modifiers into composite visual concepts.</p>
-          <aside class="notes">El blending integra metáforas y conceptos abstractos en formas visuales comprensibles.
-          </aside>
-        </section>
-
-        <!-- Fase 5 -->
-        <section>
-          
-          <object data="/svg/icon-compose.svg"></object>
-          <h3>Layout planning & composition</h3>
-
-          <p>Determines spatial arrangement of pictographic components according to semantic weight and syntax.</p>
-          <p>Selects and layers graphical assets into a coherent pictogram with defined visual grammar.</p>
-          <aside class="notes">El planificador define jerarquías visuales y disposición espacial.</aside>
-        </section>
-
-        <!-- Fase 6 -->
-        <section>
-          
-          <object data="/svg/icon-style.svg"></object>
-          <h3>Local Configuration</h3>
-          <p>Applies user preferences (stroke weight, colour, density, animation tolerance).</p>
-          <aside class="notes">El sistema se adapta a necesidades perceptuales o culturales de cada usuario.</aside>
-        </section>
-
-        <!-- Fase 7 -->
-        <section>
-          
-          <object data="/svg/icon-pictogram.svg"></object>
-          <h3>Output & Metadata</h3>
-          <p>Generates the final SVG with embedded metadata and prepares optional feedback signals for RLHF.</p>
-          <aside class="notes">El resultado es un SVG legible y editable, con trazabilidad semántica.</aside>
+          <object data="/svg/pipeline-3.svg" class="r-stretch"></object>
         </section>
       </section>
 
       <!-- PictoForge -->
-      <section data-background-image="svg/pictonet-board.svg"></section>
-      <!-- Slide 4: The pictogram pipeline: The model as a generator -->
+      <section data-background-image="images/pictoforge.png">
+        
+      </section>
+
+      <!-- 3 layered project -->
+      <section data-background-color="white">
+        <object data="svg/3-research-layers.svg" class="r-stretch"></object>
+      </section>
+
 
       <!-- Slide 5: Rationale -->
-      <section>
-        <h2>Rationale</h2>
-        <ul>
-          <li>Communication is a basic human right</li>
-          <li>Individuals with Complex Communication Needs (CCN) are systematically marginalised</li>
-          <li>AAC systems often prioritise function over aesthetics, neglecting cultural and expressive depth</li>
-          <li>Design has a structural responsibility to pre-empt exclusion</li>
-          <li>Pictograms as generative, situated artefacts—bridging AI and design</li>
-        </ul>
-        <aside class="notes">
-          Cognitive extension, not only tools, but infrastructures that enable agency and belonging.
-          Cite accessibility laws (NZ, Canada, Chile, etc.).
-          Emphasise that design itself often encodes exclusion—hence the urgency of this research.
-        </aside>
-      </section>
 
-      <!-- Slide 6: Significance -->
-      <section>
-        <h2>Significance</h2>
-        <ul>
-          <li>Reframes accessibility as a shared condition, not a marginal issue</li>
-          <li>Expands expressive capacity for CCN users—abstract, affective, context-based meanings</li>
-          <li>Bridges AAC practice and design craft</li>
-          <li>Proposes participatory, federated learning models for cultural adaptation</li>
-          <li>Envisions a pictographic commons: an open-source evolving visual language</li>
-        </ul>
-        <aside class="notes">
-          Highlight shift: cognitive accessibility as aesthetic and epistemological.
-          Users move from passive recipients to co-creators of meaning.
-          Shared commons counters fragmentation and personalisation silos.
-        </aside>
-      </section>
-
-      <!-- Slide 7: PictoNet -->
-      <section>
-        <h2>PictoNet</h2>
-        <p>The generative engine: from natural language to SVG pictograms.</p>
-        <ul>
-          <li>Visual grammar grounded in semantic primitives (NSM)</li>
-          <li>Structured pipeline: prompt → semantic parsing → SVG generation</li>
-          <li>Editable, reversible, explainable outputs</li>
-          <li>Reinforcement Learning with Human Feedback (RLHF)</li>
-          <li>Open-source, Creative Commons licensed</li>
-        </ul>
-        <aside class="notes">
-          Present PictoNet as the “core engine” of the research.
-          Mention the lineage from PICTOS → Lectogram → PictoNet.
-          Stress SVG as code: transparent, inspectable, modifiable.
-        </aside>
-      </section>
-
-      <!-- Slide 8: PictoForge -->
-      <section>
-        <h2>PictoForge</h2>
-        <p>The editor and trainer environment.</p>
-        <ul>
-          <li>Interactive SVG editor for direct manipulation</li>
-          <li>Segmented re-prompting: refine parts of pictograms</li>
-          <li>Training interface for dataset curation</li>
-          <li>Supports iterative correction and validation</li>
-          <li>Extends design practice into everyday AAC use</li>
-        </ul>
-        <aside class="notes">
-          PictoForge = continuation of design tools.
-          Emphasise user agency: co-edit, correct, and refine the model.
-          It bridges professional design practice and lived AAC use.
-        </aside>
-      </section>
-
-      <!-- Slide 9: Distributed Model / MediaFranca -->
-      <section>
-        <h2>MediaFranca</h2>
-        <ul>
-          <li><strong>PictoNet</strong>: speech-to-SVG generative core</li>
-          <li><strong>PictoForge</strong>: editor and feedback interface</li>
-          <li><strong>MediaFranca</strong>: federated architecture for shared intelligence</li>
-        </ul>
-        <p>Each community contributes local adaptations → aggregated into a shared pictographic commons.</p>
-        <aside class="notes">
-          Explain the universal–local paradox in AAC.
-          MediaFranca allows plural visual heritages without losing collective coherence.
-          Governance: validation, contribution roles, reputation systems.
-          Accessibility as civic infrastructure, not a service.
-        </aside>
-      </section>
-
-      <!-- Optional: Methodology slide -->
-      <section>
-        <h2>Methodology</h2>
-        <ul>
-          <li><strong>Situated Inquiry</strong>: interviews with AAC professionals, designers, users</li>
-          <li><strong>Formal Modelling</strong>: generative engine design and testing</li>
-          <li>Double-diamond, practice-based: making, reflecting, refining</li>
-          <li>Two intertwined tracks: relational & ontological</li>
-        </ul>
-        <aside class="notes">
-          Show the Double-Diamond Double-Track figure.
-          Stress practice-based approach: knowledge is produced through making pictograms, errors, corrections.
-          Iterative cycles link theory and practice.
-        </aside>
-      </section>
 
       <!-- Thank you, contact & information -->
       <section data-background-color="#f0f0f0" data-transition="fade">
         <h2>Thank you! any questions or comments?</h2>
         <strong>Herbert Spencer González</strong><br />
 
-          <p>Please continue the conversation: <a href="mailto:herbert.spencer@aut.ac.nz">herbert.spencer@aut.ac.nz</a></p>
-          
-       <p>This presentation lives at <a href="https://herbertspencer.net/prs">herbertspencer.net/prs</a>.<br>
-      Source code at <a href="https://github.com/hspencer/prs">github.com/hspencer/prs</a>
-      </p>
+        <p>Please continue the conversation: <a href="mailto:herbert.spencer@aut.ac.nz">herbert.spencer@aut.ac.nz</a>
+        </p>
 
-
+        <p>This presentation lives at <a href="https://herbertspencer.net/prs">herbertspencer.net/prs</a>.<br>
+          Source code at <a href="https://github.com/hspencer/prs">github.com/hspencer/prs</a>
+        </p>
       </section>
+
     </div>
   </div>
 </body>
