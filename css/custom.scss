@@ -170,7 +170,45 @@ body {
                 }
             }
             &.question{
-              padding: 0 3m;
+              padding: 0 2m;
+              line-height: 160%;
+            }
+        }
+
+        .nsm{
+            margin: 4em 0 0 0;
+            font-size: 60%;
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(20em, 1fr)); 
+            gap: 1.5rem; 
+            grid-template-rows: repeat(auto-fit, minmax(9em, 1fr));
+
+            .block-name{
+                color: rgb(248, 247, 242);
+                font-size: .9rem;
+                font-weight: 600;
+                margin: 0 0 0.5em 0;
+                text-align: left;
+            }
+
+            .nsm-block{
+                margin: 0;
+                padding: 0;
+                li{
+                    display: inline-block; 
+                    background-color: gray;
+                    margin: .31ex .1ex;
+                    padding: 0 .5ex;
+                    border-radius: .3ex;
+                    font-size: 150%;
+                }
+                .facil{
+                    background-color: rgba(94, 255, 1, 0.631);
+
+                }
+                .dificil{
+                    background-color: rgba(255, 94, 0, 0.637);
+                }
             }
         }
 

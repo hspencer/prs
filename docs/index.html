@@ -9,11 +9,12 @@
   <!-- en <head> o justo antes de </body>, pero SIEMPRE antes de main.js -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/2.0.4/p5.min.js" defer></script>
   <script src="p5/chronology.js" defer></script>
+  <script src="p5/neural-network.js" defer></script>
 
   <!-- tu entry de Vite (ruta relativa para que funcione en /prs/) -->
 
-  <script type="module" crossorigin src="/prs/assets/index-it89Lc2v.js"></script>
-  <link rel="stylesheet" crossorigin href="/prs/assets/index-Bka7uMGP.css">
+  <script type="module" crossorigin src="/prs/assets/index-mxqXiDee.js"></script>
+  <link rel="stylesheet" crossorigin href="/prs/assets/index-B7p5y5eh.css">
 </head>
 
 <body>
@@ -61,22 +62,12 @@
         <section data-background-image="images/aromos.jpg"></section>
 
         <!-- Familias  -->
-        <section data-background-color="black">
-          <h2 style="color:rgba(255, 255, 255, 0.383)">My families and tribes </h2>
-          <div style="display: flex; justify-content: center; align-items: center; height: 30vh;">
-            <img src="images/family.jpg" alt="la familia" class="mask fit" style="max-width: 50%; z-index: 4;">
-            <img src="images/family-2.jpg" alt="la familia" class="mask fit"
-              style="max-width: 67%; margin-left: -38%; z-index: 3;">
-            <img src="images/nucleo.jpg" alt="la familia" class="mask fit"
-              style="max-width: 50%; margin-left: -33%; z-index: 2;">
-            <img src="images/nucleo-2.jpg" alt="la familia" class="mask fit"
-              style="max-width: 60%; margin-left: -29%; z-index: 1;">
-          </div>
+        <section data-background-image="images/family-2.jpg">
+          <h2 style="color:rgb(255, 228, 218); text-shadow: 2px 2px 5px #000a;">My family</h2>
         </section>
 
         <!-- Inclusive Research and cognitive accessibility  -->
         <section data-background-image="images/pictos-metro.jpg">
-          <img src="images/pictos-vertical.jpg" alt="PICTOS App in use" class="fragment mask fade-in fit">
         </section>
 
         <!-- PICTOS Service  -->
@@ -149,9 +140,13 @@
 
       </section><!-- fin de code-as-svg -->
 
+      <!-- Neural Network-->
+       <section class="w">
+         <div class="p5-host" data-sketch="neural-network"></div>
+       </section>
 
       <!-- PictoNet Generative Pipeline -->
-      <section>
+      <section data-background-gradient="linear-gradient(173deg,rgba(0, 50, 71, 1) 0%, rgba(207, 162, 116, 1) 71%, rgba(245, 232, 181, 1) 99%)">
         <h2 class="">PictoNet Generative Pipeline</h2>
         <p class="tagline">From text input to adaptive pictogram output</p>
 
@@ -166,6 +161,121 @@
         <section>
           <object data="/prs/svg/pipeline-3.svg" class="r-stretch"></object>
         </section>
+      </section>
+
+      <section data-background-gradient="linear-gradient(173deg,rgba(2, 20, 20, 1) 1%, rgba(36, 40, 43, 1) 61%, rgba(30, 46, 29, 1) 100%)">
+        <h2 class="title">semantic primes</h2> 
+        <main class="nsm" >
+            <!-- 1. Substantives -->
+            <div>
+                <h2 class="block-name">Substantives</h2>
+                <ul class="nsm-block">
+                    <li class="facil">I</li>
+                    <li class="facil">YOU</li>
+                    <li class="facil">SOMEONE / PERSON</li>
+                    <li class="facil">SOMETHING / THING</li>
+                    <li class="facil">BODY</li>
+                    <li class="facil">PEOPLE</li>
+                </ul>
+              </div>
+
+            <!-- 2. Determiners & Quantifiers -->
+            <div>
+                <h2 class="block-name">Determiners & Quantifiers</h2>
+                <ul class="nsm-block">
+                    <li class="facil">THIS</li>
+                    <li class="facil">THE SAME</li>
+                    <li class="facil">OTHER / ELSE</li>
+                    <li class="facil">ONE</li>
+                    <li class="facil">TWO</li>
+                    <li class="facil">MANY / MUCH</li>
+                    <li class="facil">SOME / A FEW</li>
+                    <li class="facil">ALL</li>
+                    <li class="dificil">THERE IS / EXISTS</li>
+                    <li class="dificil">HAVE (PARTS)</li>
+                </ul>
+              </div>
+
+            <!-- 3. Actions & Events -->
+            <div>
+                <h2 class="block-name">Actions & Events</h2>
+                <ul class="nsm-block">
+                    <li class="facil">DO</li>
+                    <li class="dificil">HAPPEN</li>
+                    <li class="facil">MOVE</li>
+                    <li class="facil">TOUCH</li>
+                </ul>
+              </div>
+
+            <!-- 4. Mental Predicates -->
+            <div>
+                <h2 class="block-name">Mental Predicates</h2>
+                <ul class="nsm-block">
+                    <li class="dificil">THINK</li>
+                    <li class="dificil">KNOW</li>
+                    <li class="dificil">WANT</li>
+                    <li class="dificil">FEEL</li>
+                    <li class="facil">SEE</li>
+                    <li class="facil">HEAR</li>
+                </ul>
+              </div>
+
+            <!-- 5. Speech -->
+            <div>
+                <h2 class="block-name">Speech</h2>
+                <ul class="nsm-block">
+                    <li class="facil">SAY</li>
+                    <li class="facil">WORD</li>
+                    <li class="dificil">TRUE</li>
+                </ul>
+              </div>
+
+            <!-- 6. Time & Place -->
+            <div>
+                <h2 class="block-name">Time & Place</h2>
+                <ul class="nsm-block">
+                    <li class="dificil">WHEN / TIME</li>
+                    <li class="facil">NOW</li>
+                    <li class="facil">BEFORE</li>
+                    <li class="facil">AFTER</li>
+                    <li class="facil">A LONG TIME</li>
+                    <li class="facil">A SHORT TIME</li>
+                    <li class="dificil">WHERE / PLACE</li>
+                    <li class="facil">HERE</li>
+                    <li class="facil">ABOVE</li>
+                    <li class="facil">BELOW</li>
+                    <li class="facil">FAR</li>
+                    <li class="facil">NEAR</li>
+                    <li class="facil">SIDE</li>
+                    <li class="facil">INSIDE</li>
+                </ul>
+              </div>
+
+            <!-- 7. Logical Concepts -->
+            <div>
+                <h2 class="block-name">Logical Concepts</h2>
+                <ul class="nsm-block">
+                    <li class="facil">NOT / NO</li>
+                    <li class="dificil">MAYBE</li>
+                    <li class="dificil">CAN</li>
+                    <li class="dificil">BECAUSE</li>
+                    <li class="dificil">IF</li>
+                </ul>
+              </div>
+
+            <!-- 8. Evaluators & Descriptors -->
+            <div>
+                <h2 class="block-name">Evaluators & Descriptors</h2>
+                <ul class="nsm-block">
+                    <li class="facil">GOOD</li>
+                    <li class="facil">BAD</li>
+                    <li class="facil">BIG</li>
+                    <li class="facil">SMALL</li>
+                    <li class="dificil">VERY</li>
+                    <li class="dificil">LIKE / AS</li>
+                </ul>
+              </div>
+        </main>
       </section>
 
       <!-- PictoForge -->
