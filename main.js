@@ -4,7 +4,7 @@ import Reveal from 'reveal.js/dist/reveal.esm.js';
 import Markdown from 'reveal.js/plugin/markdown/markdown.esm.js';
 import Zoom from 'reveal.js/plugin/zoom/zoom.esm.js';
 import Notes from 'reveal.js/plugin/notes/notes.esm.js';
-import Highlight from 'reveal.js/plugin/highlight/highlight.esm.js';
+// import Highlight from 'reveal.js/plugin/highlight/highlight.esm.js';
 
 import './node_modules/reveal.js/css/reveal.scss';
 import './css/custom.scss';
@@ -15,7 +15,7 @@ const deck = new Reveal({
   slideNumber: false,
   transition: 'fade',
   // Plugins de la primera inicialización
-  plugins: [ Markdown, Zoom, Notes, Highlight ]
+  plugins: [ Markdown, Zoom, Notes ]
 });
 
 
