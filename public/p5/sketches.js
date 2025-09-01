@@ -2,6 +2,8 @@
 // GESTOR DE INSTANCIAS P5.JS PARA REVEAL.JS
 // ========================================================================
 
+const P5_REGISTRY = new Map();
+
 /**
  * Monta todos los sketches de p5.js dentro de una sección/diapositiva.
  * Se debe llamar cuando la diapositiva se vuelve visible.
@@ -157,12 +159,12 @@ function neuralNetworkSketchFactory(parentEl) {
       minLayers: num(parentEl.dataset.minLayers, 5),
       maxLayers: num(parentEl.dataset.maxLayers, 11),
       minNodes: num(parentEl.dataset.minNodes, 6),
-      maxNodes: num(parentEl.dataset.maxNodes, 100),
-      nodeSize: num(parentEl.dataset.nodeSize, 8.0),
+      maxNodes: num(parentEl.dataset.maxNodes, 30),
+      nodeSize: num(parentEl.dataset.nodeSize, 4.0),
       minConnectionStroke: num(parentEl.dataset.minConnectionStroke, 0.25),
       maxConnectionStroke: num(parentEl.dataset.maxConnectionStroke, 4.0),
       minConnectionAlpha: num(parentEl.dataset.minConnectionAlpha, 3),
-      maxConnectionAlpha: num(parentEl.dataset.maxConnectionAlpha, 20),
+      maxConnectionAlpha: num(parentEl.dataset.maxConnectionAlpha, 30),
       frameRate: num(parentEl.dataset.frameRate, 5)
     };
 
@@ -173,7 +175,7 @@ function neuralNetworkSketchFactory(parentEl) {
     p.setup = () => {
       p.createCanvas(parentEl.clientWidth, parentEl.clientHeight);
       p.frameRate(cfg.frameRate);
-      nodeColor = p.color(200, 200, 255, 180);
+      nodeColor = p.color(255, 67, 0, 180);
       generateRandomNetwork();
     };
 
@@ -213,21 +215,31 @@ function neuralNetworkSketchFactory(parentEl) {
     }
 
     function generateNetworkLayout() {
-      network = [];
-      const numLayers = nodesPerLayer.length;
-      const layerSpacing = p.width / (numLayers + 1);
+    network = [];
+    const numLayers = nodesPerLayer.length;
+    const layerSpacing = p.width / (numLayers + 1);
+    const margin = 200; // Tu margen vertical en píxeles
 
-      for (let i = 0; i < numLayers; i++) {
+    for (let i = 0; i < numLayers; i++) {
         const layer = [];
         const numNodesInLayer = nodesPerLayer[i];
+        // El espacio se calcula sobre la altura total disponible
         const nodeSpacing = p.height / (numNodesInLayer + 1);
         const x = layerSpacing * (i + 1);
+
         for (let j = 0; j < numNodesInLayer; j++) {
-          const y = nodeSpacing * (j + 1);
-          layer.push({ x, y });
+        // 1. Calcula la posición 'y' ideal sin margen
+        const idealY = nodeSpacing * (j + 1);
+        
+        // 2. Mapea esa posición al nuevo rango con margen
+        //    p.map(valor, rango_original_inicio, rango_original_fin, rango_nuevo_inicio, rango_nuevo_fin)
+        const mappedY = p.map(idealY, 0, p.height, margin, p.height - margin);
+
+        // 3. Añade el nodo con la propiedad 'y' para que las otras funciones lo encuentren
+        layer.push({ x: x, y: mappedY });
         }
         network.push(layer);
-      }
+    }
     }
 
     function drawNodes() {
@@ -248,7 +260,7 @@ function neuralNetworkSketchFactory(parentEl) {
           for (const b of next) {
             const sw = p.random(cfg.minConnectionStroke, cfg.maxConnectionStroke);
             const sa = p.random(cfg.minConnectionAlpha, cfg.maxConnectionAlpha);
-            p.stroke(200, 100, 0, sa);
+            p.stroke(254, 129, 112, sa);
             p.strokeWeight(sw);
             p.line(a.x, a.y, b.x, b.y);
           }

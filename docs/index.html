@@ -8,13 +8,9 @@
 
   <!-- en <head> o justo antes de </body>, pero SIEMPRE antes de main.js -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/2.0.4/p5.min.js" defer></script>
-  <script src="p5/chronology.js" defer></script>
-  <script src="p5/neural-network.js" defer></script>
-
-  <!-- tu entry de Vite (ruta relativa para que funcione en /prs/) -->
-
-  <script type="module" crossorigin src="/prs/assets/index-mxqXiDee.js"></script>
-  <link rel="stylesheet" crossorigin href="/prs/assets/index-B7p5y5eh.css">
+  <script src="./p5/sketches.js" defer></script>
+  <script type="module" crossorigin src="/prs/assets/index-DbwEpVpQ.js"></script>
+  <link rel="stylesheet" crossorigin href="/prs/assets/index-BHIQTKht.css">
 </head>
 
 <body>
@@ -140,31 +136,39 @@
 
       </section><!-- fin de code-as-svg -->
 
-      <!-- Neural Network-->
-       <section class="w">
-         <div class="p5-host" data-sketch="neural-network"></div>
-       </section>
-
       <!-- PictoNet Generative Pipeline -->
-      <section data-background-gradient="linear-gradient(173deg,rgba(0, 50, 71, 1) 0%, rgba(207, 162, 116, 1) 71%, rgba(245, 232, 181, 1) 99%)">
-        <h2 class="">PictoNet Generative Pipeline</h2>
-        <p class="tagline">From text input to adaptive pictogram output</p>
-
+      <section
+        data-background-gradient="linear-gradient(173deg,rgba(2, 20, 20, 1) 1%, rgba(36, 40, 43, 1) 61%, rgba(30, 46, 29, 1) 100%)">
+        <h2 style="color: orangered">PictoNet Generative Pipeline</h2>
+        <p class="tagline" style="color: rgba(250, 235, 215, 0.485);">From text input to adaptive pictogram output</p>
+        
         <section>
-          <object data="/prs/svg/pipeline-1.svg" class="r-stretch"></object>
+          <div
+            class="p5-host" 
+            data-sketch="neural-network" 
+            data-node-size="10"
+            data-frame-rate="8">
+          </div>
+        </section>
+        
+
+        <section data-background-color="transparent">
+          <img src="/prs/svg/pipeline-1.svg" class="r-stretch" style="background-color: transparent;">
         </section>
 
         <section>
-          <object data="/prs/svg/pipeline-2.svg" class="r-stretch"></object>
+          <img src="/prs/svg/pipeline-2.svg" class="r-stretch">
         </section>
 
         <section>
-          <object data="/prs/svg/pipeline-3.svg" class="r-stretch"></object>
+          <img src="/prs/svg/pipeline-3.svg" class="r-stretch">
         </section>
+
       </section>
 
+      <!-- NSM Semantic Primes -->
       <section data-background-gradient="linear-gradient(173deg,rgba(2, 20, 20, 1) 1%, rgba(36, 40, 43, 1) 61%, rgba(30, 46, 29, 1) 100%)">
-        <h2 class="title">semantic primes</h2> 
+        <h2 class="title">65 semantic primes</h2> 
         <main class="nsm" >
             <!-- 1. Substantives -->
             <div>
@@ -289,9 +293,6 @@
       </section>
 
 
-      <!-- Slide 5: Rationale -->
-
-
       <!-- Thank you, contact & information -->
       <section data-background-color="#f0f0f0" data-transition="fade">
         <h2>Thank you! any questions or comments?</h2>
@@ -307,6 +308,7 @@
 
     </div>
   </div>
-</body>
+  <!-- tu entry de Vite (ruta relativa para que funcione en /prs/) -->
 
+</body>
 </html>
