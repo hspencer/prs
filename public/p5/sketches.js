@@ -218,7 +218,7 @@ function neuralNetworkSketchFactory(parentEl) {
     network = [];
     const numLayers = nodesPerLayer.length;
     const layerSpacing = p.width / (numLayers + 1);
-    const margin = 200; // Tu margen vertical en píxeles
+    const margin = 100; // Tu margen vertical en píxeles
 
     for (let i = 0; i < numLayers; i++) {
         const layer = [];

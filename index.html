@@ -53,19 +53,26 @@
 
         <!-- Familias  -->
         <section data-background-image="images/family-2.jpg">
-          <h2 style="color:rgb(255, 228, 218); text-shadow: 2px 2px 5px #000a;">My family</h2>
+          <h2 class="photo-overlay"><span>My family</span></h2>
         </section>
 
         <!-- Profesor  -->
         <section data-background-image="images/travesia.jpg" >
+          <h2 class="photo-overlay"><span>Travesía 2018</span><br><span>Corredor Litoral</span><br><span class="light">First Year Design Studio</span><span>+</span><br><span class="light">Third year Light and Color Design Studio</span></h2>
         </section>
 
         <!-- Investigador  -->
         <section data-background-image="images/nucleo-2.jpg" >
+          <h2 class="photo-overlay"><span class="light">Initial round of</span><br><span>Interdisciplinary Inclusive Research</span><br><span>2017</span></h2>
+        </section>
+
+        <section data-background-image="images/nucleo.jpg" >
+          <h2 class="photo-overlay"><span class="light">Research Centre for</span><br><span>Accessibility and Inclusion</span><br><span class="light">Pontifical Catholic University of Valparaíso</span></h2>
         </section>
 
         <!-- Inclusive Research and cognitive accessibility  -->
         <section data-background-image="images/pictos-metro.jpg">
+          <h2 class="photo-overlay"><span>The PICTOS proyect</span><br><span class="light">Visual and Procedural Supports for</span><br><span>Cognitive Accessibility of Public Services</span></h2>
         </section>
 
         <!-- PICTOS Service  -->
@@ -104,6 +111,11 @@
           <aside class="notes">
             Fondo interactivo: no hay “marco” visual. Ideal para demos a pantalla completa.
           </aside>
+        </section>
+
+        <section 
+        data-background-color="#FFF" 
+        data-background-image="svg/word-visual-space.svg" >
         </section>
 
         <section data-background-iframe="https://hspencer.github.io/lectogram" frameborder="0" class="zoom133">
@@ -349,17 +361,18 @@
       <!-- NSM Semantic Primes -->
       <section data-background-gradient="linear-gradient(173deg,rgba(2, 20, 20, 1) 1%, rgba(36, 40, 43, 1) 61%, rgba(30, 46, 29, 1) 100%)">
         <h2 class="title">65 semantic primes</h2> 
+        <p class="light">Wierzbicka, A. (1996, revised 2017). Natural Semantic Metalanguage: Revised set of 65 semantic primes. London: Oxford University Press.</p>
         <main class="nsm" >
             <!-- 1. Substantives -->
             <div>
                 <h2 class="block-name">Substantives</h2>
                 <ul class="nsm-block">
-                    <li class="facil">I</li>
-                    <li class="facil">YOU</li>
-                    <li class="facil">SOMEONE / PERSON</li>
-                    <li class="facil">SOMETHING / THING</li>
-                    <li class="facil">BODY</li>
-                    <li class="facil">PEOPLE</li>
+                    <li class="d1">I</li>
+                    <li class="d2">YOU</li>
+                    <li class="d1">SOMEONE / PERSON</li>
+                    <li class="d1">SOMETHING / THING</li>
+                    <li class="d1">BODY</li>
+                    <li class="d2">PEOPLE</li>
                 </ul>
               </div>
 
@@ -367,16 +380,16 @@
             <div>
                 <h2 class="block-name">Determiners & Quantifiers</h2>
                 <ul class="nsm-block">
-                    <li class="facil">THIS</li>
-                    <li class="facil">THE SAME</li>
-                    <li class="facil">OTHER / ELSE</li>
-                    <li class="facil">ONE</li>
-                    <li class="facil">TWO</li>
-                    <li class="facil">MANY / MUCH</li>
-                    <li class="facil">SOME / A FEW</li>
-                    <li class="facil">ALL</li>
-                    <li class="dificil">THERE IS / EXISTS</li>
-                    <li class="dificil">HAVE (PARTS)</li>
+                    <li class="d1">THIS</li>
+                    <li class="d2">THE SAME</li>
+                    <li class="d3">OTHER / ELSE</li>
+                    <li class="d1">ONE</li>
+                    <li class="d1">TWO</li>
+                    <li class="d2">MANY / MUCH</li>
+                    <li class="d3">SOME / A FEW</li>
+                    <li class="d4">ALL</li>
+                    <li class="d5">THERE IS / EXISTS</li>
+                    <li class="d4">HAVE (PARTS)</li>
                 </ul>
               </div>
 
@@ -384,10 +397,10 @@
             <div>
                 <h2 class="block-name">Actions & Events</h2>
                 <ul class="nsm-block">
-                    <li class="facil">DO</li>
-                    <li class="dificil">HAPPEN</li>
-                    <li class="facil">MOVE</li>
-                    <li class="facil">TOUCH</li>
+                    <li class="d1">DO</li>
+                    <li class="d4">HAPPEN</li>
+                    <li class="d1">MOVE</li>
+                    <li class="d1">TOUCH</li>
                 </ul>
               </div>
 
@@ -395,12 +408,12 @@
             <div>
                 <h2 class="block-name">Mental Predicates</h2>
                 <ul class="nsm-block">
-                    <li class="dificil">THINK</li>
-                    <li class="dificil">KNOW</li>
-                    <li class="dificil">WANT</li>
-                    <li class="dificil">FEEL</li>
-                    <li class="facil">SEE</li>
-                    <li class="facil">HEAR</li>
+                    <li class="d3">THINK</li>
+                    <li class="d4">KNOW</li>
+                    <li class="d5">WANT</li>
+                    <li class="d5">FEEL</li>
+                    <li class="d4">SEE</li>
+                    <li class="d4">HEAR</li>
                 </ul>
               </div>
 
@@ -408,9 +421,9 @@
             <div>
                 <h2 class="block-name">Speech</h2>
                 <ul class="nsm-block">
-                    <li class="facil">SAY</li>
-                    <li class="facil">WORD</li>
-                    <li class="dificil">TRUE</li>
+                    <li class="d2">SAY</li>
+                    <li class="d3">WORD</li>
+                    <li class="d5">TRUE</li>
                 </ul>
               </div>
 
@@ -418,20 +431,20 @@
             <div>
                 <h2 class="block-name">Time & Place</h2>
                 <ul class="nsm-block">
-                    <li class="dificil">WHEN / TIME</li>
-                    <li class="facil">NOW</li>
-                    <li class="facil">BEFORE</li>
-                    <li class="facil">AFTER</li>
-                    <li class="facil">A LONG TIME</li>
-                    <li class="facil">A SHORT TIME</li>
-                    <li class="dificil">WHERE / PLACE</li>
-                    <li class="facil">HERE</li>
-                    <li class="facil">ABOVE</li>
-                    <li class="facil">BELOW</li>
-                    <li class="facil">FAR</li>
-                    <li class="facil">NEAR</li>
-                    <li class="facil">SIDE</li>
-                    <li class="facil">INSIDE</li>
+                    <li class="d5">WHEN / TIME</li>
+                    <li class="d3">NOW</li>
+                    <li class="d3">BEFORE</li>
+                    <li class="d3">AFTER</li>
+                    <li class="d5">A LONG TIME</li>
+                    <li class="d5">A SHORT TIME</li>
+                    <li class="d4">WHERE / PLACE</li>
+                    <li class="d2">HERE</li>
+                    <li class="d1">ABOVE</li>
+                    <li class="d1">BELOW</li>
+                    <li class="d1">FAR</li>
+                    <li class="d1">NEAR</li>
+                    <li class="d1">SIDE</li>
+                    <li class="d1">INSIDE</li>
                 </ul>
               </div>
 
@@ -439,11 +452,11 @@
             <div>
                 <h2 class="block-name">Logical Concepts</h2>
                 <ul class="nsm-block">
-                    <li class="facil">NOT / NO</li>
-                    <li class="dificil">MAYBE</li>
-                    <li class="dificil">CAN</li>
-                    <li class="dificil">BECAUSE</li>
-                    <li class="dificil">IF</li>
+                    <li class="d2">NOT / NO</li>
+                    <li class="d4">MAYBE</li>
+                    <li class="d4">CAN</li>
+                    <li class="d5">BECAUSE</li>
+                    <li class="d5">IF</li>
                 </ul>
               </div>
 
@@ -451,12 +464,12 @@
             <div>
                 <h2 class="block-name">Evaluators & Descriptors</h2>
                 <ul class="nsm-block">
-                    <li class="facil">GOOD</li>
-                    <li class="facil">BAD</li>
-                    <li class="facil">BIG</li>
-                    <li class="facil">SMALL</li>
-                    <li class="dificil">VERY</li>
-                    <li class="dificil">LIKE / AS</li>
+                    <li class="d4">GOOD</li>
+                    <li class="d4">BAD</li>
+                    <li class="d2">BIG</li>
+                    <li class="d2">SMALL</li>
+                    <li class="d3">VERY</li>
+                    <li class="d3">LIKE / AS</li>
                 </ul>
               </div>
         </main>
