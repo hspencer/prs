@@ -32,60 +32,6 @@ $color: #141414c2; // Color de texto
     text-shadow: $shadows;
 }
 
-// Mixin: feather-circle-mask
-// ———————————————————————————————————————————————
-// Aplica la máscara externa `svg/circle-mask.svg#soft` sobre un elemento (img, video, div).
-// Parámetros:
-// - $offset: margen interior logrado escalando la máscara (simula “inset”).
-// - $fallback-feather: ancho del feather en el fallback por gradiente radial (si falla la SVG mask).
-//
-// Detalles importantes:
-// - Usamos `mask: url(file.svg#id)` para apuntar a un <mask> SVG, no a una “imagen” de máscara.
-//   Esto evita el problema de “cruz” y de colores (alpha vs luminancia) al usar múltiples capas.
-// - `mask-mode: luminance` asegura que blanco=visible / negro=transparente con la máscara SVG.
-// - `mask-size` y `mask-position` permiten recentrar y encoger la máscara para crear offset.
-// - Fallback: `radial-gradient()` genera un feather circular usando alpha (sin SVG).
-//
-// Uso:
-//   img.photo { @include feather-circle-mask(24px); }
-// ———————————————————————————————————————————————
-@mixin feather-circle-mask($offset: 0px, $fallback-feather: 28px) {
-  // Tamaño de la máscara al restar el offset por ambos lados
-  $ms: calc(100% - (2 * #{$offset}));
-
-  // Máscara SVG (preferida)
-  mask: url("svg/circle-mask.svg#soft") no-repeat center / #{$ms} #{$ms};
-  -webkit-mask: url("svg/circle-mask.svg#soft") no-repeat center / #{$ms} #{$ms};
-  mask-mode: luminance;
-
-  // Fallback: un solo radial-gradient con feather (alpha) — no crea “cruz”.
-  @supports not (mask: url("svg/circle-mask.svg#soft")) {
-    // El 50% es el radio base; el feather se añade como banda de transición.
-    $rHard: calc(50% - #{$fallback-feather});
-    $rSoft: calc(50% + #{$fallback-feather});
-
-    mask-image: radial-gradient(closest-side at 50% 50%,
-                  #000 0 #{$rHard}, transparent #{$rSoft});
-    -webkit-mask-image: radial-gradient(closest-side at 50% 50%,
-                  #000 0 #{$rHard}, transparent #{$rSoft});
-    mask-repeat: no-repeat;
-    -webkit-mask-repeat: no-repeat;
-    mask-position: center;
-    -webkit-mask-position: center;
-    mask-size: #{$ms} #{$ms};
-    -webkit-mask-size: #{$ms} #{$ms};
-    // Con gradientes trabajamos por alpha (blanco/negro dan igual; importa opacidad)
-    mask-mode: alpha;
-  }
-}
-
-/* Ejemplo rápido
-figure > img {
-  display: block; // imágenes inline pueden tener espacios indeseados
-  @include feather-circle-mask(24px, 26px);
-}
-*/
-
 
 /* Estilos globales */
 body {
@@ -179,6 +125,9 @@ body {
                     color: #ffffff73;
                     strong{color: white;}
             }
+            &.small {
+                font-size: 0.8rem;
+            }
         }
         h2{
     
@@ -202,6 +151,14 @@ body {
                 }
             }
            
+        }
+
+        .last{
+            a,
+            a:visited{
+                color: $primary-color;
+                font-weight: 600;
+            }
         }
 
         .nsm{
@@ -319,10 +276,6 @@ body {
             height: auto;
         }
 
-        .mask {
-           @include feather-circle-mask(24px);
-        }
-
         .w {
             background-color: white;
         }
@@ -391,7 +344,7 @@ body {
   }
 
   svg .is-selected {
-    filter: drop-shadow(0 0 .35rem $col) drop-shadow(0 0 .15rem $col);
+    filter: drop-shadow(0 0 .11rem $col) drop-shadow(0 0 .08rem $col);
     transition: filter .12s ease;
   }
 }
