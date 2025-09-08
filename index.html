@@ -49,7 +49,6 @@
       <!-- Slide 2: About Me  -->
       <section data-background-color="#FFF">
 
-
         <!-- Aromos  -->
         <section data-background-image="images/aromos.jpg">
           <aside class="notes">This is were I live back in Chile, this is the Aromos Stuary, close to the Aconcagua river and Cerro la Campana</aside>
@@ -69,20 +68,32 @@
         <!-- Investigador  -->
         <section data-background-image="images/nucleo-2.jpg" >
           <h2 class="photo-overlay"><span class="light">Initial round of</span><br><span>Interdisciplinary Inclusive Research</span><br><span>2017</span></h2>
+          <aside class="notes">
+            In 2017, following a challenging invitation from researchers in special education, I began working on disability-related topics, focusing on self-determination and quality of life.
+          </aside></aside>
         </section>
 
         <section data-background-image="images/nucleo.jpg" >
           <h2 class="photo-overlay"><span class="light">Research Centre for</span><br><span>Accessibility and Inclusion</span><br><span class="light">Pontifical Catholic University of Valparaíso</span></h2>
+          <aside class="notes">
+            Over time, the team has grown to include researchers from linguistics, special education, computer engineering, civil engineering, law, sociology, and other disciplines, all working together under the paradigm of inclusive research.
+          </aside></aside>
         </section>
 
         <!-- Inclusive Research and cognitive accessibility  -->
         <section data-background-image="images/pictos-metro.jpg">
           <h2 class="photo-overlay"><span>The PICTOS proyect</span><br><span class="light">Visual and Procedural Supports for</span><br><span>Cognitive Accessibility of Public Services</span></h2>
+          <aside class="notes">
+            The PICTOS project allowed us to work for two years conducting inclusive research to identify the most pressing needs of adults with intellectual disabilities. They told us that their quality of life is strongly affected by a lack of autonomy due to the low accessibility of public services, with particular emphasis on health, transportation, administrative procedures, and leisure.
+          </aside>
         </section>
 
         <!-- PICTOS Service  -->
         <section class="w">
           <img class="fit" src="images/pictos-service.png" alt="PICTOS SERVICE ARCHITECTURE">
+          <aside class="notes">
+            Together with the team, we designed a system of visual and procedural supports to enable everyone to access the value provided by these services, that is, to successfully complete transactions. With the team, we designed a visual grammar for constructing pictograms, a plain language approach for writing instructions, and an architecture to define publishing software for supports across different services.
+          </aside>
         </section>
 
         <!-- Exponential tech growth  -->
@@ -123,7 +134,7 @@
         <section data-background-iframe="https://pictogramas.pictos.cl" data-background-interactive
           data-background-opacity="1" class="zoom125">
           <aside class="notes">
-            PICTOS pictogrmas are constructed as the sum of 3 layers. The complete support is the pictogram that represents the situation, the instruction in writen and spoken word and an icon that reinforces the action.
+            PICTOS pictogramas are constructed as the sum of 3 layers. The complete support is the pictogram that represents the situation, the instruction in writen and spoken word and an icon that reinforces the action.
           </aside>
         </section>
 
@@ -131,10 +142,16 @@
         <section 
         data-background-color="#FFF" 
         data-background-image="svg/word-visual-space.svg" >
+        <aside class="notes"> la propuesta consiste en establecer una correspondencia directa entre el espacio de la palabra y el espacio de la imagen. Esta rima favorece la comprensión y disminuye la sobrecarga cognitiva. Y es en base a esta lógica sobre la cual se funda mi presente Investigación.</aside>
         </section>
 
         <!-- Lectogram -->
         <section data-background-iframe="https://herbertspencer.net/lectogram/" frameborder="0" class="zoom133">
+          <aside class="notes">
+            I have continued developing multiple pictograms, such as those created for older adults with dementia and other cognitive impairments for use at home, providing functional support for daily living activities. Through this process, I realised the need to systematise the construction of a visual phrase using reusable iconic elements. This led me to the following definition of a pictogram: 
+
+            A pictogram is a graphical representation that transcends written language by conveying a concept or action through a combination of iconic elements arranged meaningfully. It acts as a visual phrase, integrating several elements into a coherent, context-sensitive whole. A pictogram establishes a memorable physical association with its referent and serves as a clear, iconic abstraction within a structured visual language system.
+          </aside></aside>
         </section>
 
       </section>
@@ -154,7 +171,7 @@
             </div>
 
             <!-- DERECHA: contenedor para SVG inline (sustituye el <object> existente) -->
-            <div id="svg-stage" style="display:flex;align-items:center;justify-content:center;background:#9c9b9b;">
+            <div id="svg-stage" style="display:flex;align-items:center;justify-content:center;background:#9c9b9b;border-radius:1ex;">
             </div>
 
             <!-- script del round trip hightlight -->
@@ -338,7 +355,7 @@
           </div>
 
           <aside class="notes">
-            Hover or click an <code>id</code> on either side to highlight both the code snippet and the SVG element.
+            Here is the thing: SVG is both an image format and a text-based code format. This means that you can edit it as text, and the image will change accordingly. Note that the code holds verosimilitude to the semantic structure of the image. This opens a more granular way to edit and adapt pictograms, and for the system to learn from those edits.
           </aside>
         </section>
 
@@ -357,25 +374,35 @@
             data-node-size="10"
             data-frame-rate="8">
           </div>
+          <aside class="notes">But LLMs are, by definition, black boxes. They are complicated, obfuscated, and not designed to be transparent nor cognitively accesible for humans. But, what if we can deconstruct the design process behind a pictogram, and use that as a pipeline to guide the LLM in generating pictograms? This is one line of my initial enquiry, were I'm interviewing pictogram designers.</aside>
         </section>
         
 
         <section data-background-color="transparent">
           <img src="/svg/pipeline-1.svg" class="r-stretch" style="background-color: transparent;">
+          <aside class="notes">
+            From one end we input text (voice or written), which is then processed through Natural Language Processing to extract semantic features. These features are then mapped to visual elements using a predefined set of design rules and principles. Finally, the visual elements are composed into a coherent pictogram that effectively communicates the intended message.
+          </aside>
         </section>
 
         <section>
           <img src="/svg/pipeline-2.svg" class="r-stretch">
+          <aside class="notes">
+            The system is designed to be adaptive, allowing for customization based on user preferences and context. This includes adjusting the level of detail, color schemes, and cultural considerations to ensure the pictograms are both effective and inclusive.
+          </aside>
         </section>
 
         <section>
           <img src="/svg/pipeline-3.svg" class="r-stretch">
         </section>
-
+        <aside class="notes">
+          The goal of this generative pipeline is to create a flexible and scalable system that can produce high-quality pictograms on demand, enhancing communication for individuals with complex communication needs.
+        </aside>
       </section>
 
       <!-- NSM Semantic Primes -->
-      <section data-background-gradient="linear-gradient(173deg,rgba(2, 20, 20, 1) 1%, rgba(36, 40, 43, 1) 61%, rgba(30, 46, 29, 1) 100%)">
+      <section data-background-gradient="linear-gradient(173deg,rgba(2, 20, 20, 1) 1%, rgba(36, 40, 43, 1) 61%, rgba(30, 46, 29, 1) 100%)"
+      data-transition="slide">
         <h2 class="title">65 semantic primes</h2> 
         
         <main class="nsm" >
@@ -489,12 +516,26 @@
                 </ul>
               </div>
         </main>
-        <p class="light">Wierzbicka, A. (1996, revised 2017). Natural Semantic Metalanguage: Revised set of 65 semantic primes. London: Oxford University Press.</p>
+        <p class="light"><strong>Wierzbicka, A.</strong> (1996, revised 2017). Natural Semantic Metalanguage<br>Revised set of 65 semantic primes. London: Oxford University Press.</p>
       </section>
 
       <!-- PictoForge -->
-      <section data-background-image="images/pictoforge.png">
-        
+      <section
+        data-background-image="images/pictoforge.png"
+        class="pf-slide"
+      >
+        <!-- Overlay que aparece con el primer clic -->
+        <img
+          src="images/pictoforge-edit.png"
+          alt="Segment Editor"
+          class="fragment fade-in-then-out pf-overlay"
+          style="width: 400px; margin: 0 30% 0 30%"
+          "
+          data-fragment-index="1"
+        >
+        <aside class="notes">
+          I click once to reveal the editing overlay; click again to hide it.
+        </aside>
       </section>
 
       <!-- 3 layered project -->
